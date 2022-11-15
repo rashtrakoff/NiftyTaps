@@ -1,0 +1,2246 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "NotTapCreator",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint96",
+          "name": "ratePerNFT",
+          "type": "uint96"
+        }
+      ],
+      "name": "SameTapRate",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TapActive",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TapExists",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TapInactive",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TapActivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "nft",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TapCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TapDeactivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint96",
+          "name": "oldRatePerNFT",
+          "type": "uint96"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint96",
+          "name": "newRatePerNFT",
+          "type": "uint96"
+        }
+      ],
+      "name": "TapRateChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "activateTap",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint96",
+          "name": "newRatePerNFT",
+          "type": "uint96"
+        }
+      ],
+      "name": "changeRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "nft",
+          "type": "address"
+        },
+        {
+          "internalType": "uint96",
+          "name": "ratePerNFT",
+          "type": "uint96"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        }
+      ],
+      "name": "createTap",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deactivateTap",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "nft",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        }
+      ],
+      "name": "getTapId",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "activateTap(bytes32)": "10492623",
+    "changeRate(bytes32,uint96)": "3b5b977c",
+    "createTap(string,address,uint96,uint256,address)": "1b9432a2",
+    "deactivateTap(bytes32)": "0fb011aa",
+    "getTapId(string,address,address)": "d5e30f04"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"NotTapCreator\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"uint96\",\"name\":\"ratePerNFT\",\"type\":\"uint96\"}],\"name\":\"SameTapRate\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"TapActive\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"TapExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"TapInactive\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"TapActivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"TapCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"TapDeactivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"oldRatePerNFT\",\"type\":\"uint96\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"newRatePerNFT\",\"type\":\"uint96\"}],\"name\":\"TapRateChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"activateTap\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"uint96\",\"name\":\"newRatePerNFT\",\"type\":\"uint96\"}],\"name\":\"changeRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"ratePerNFT\",\"type\":\"uint96\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"contract ISuperToken\",\"name\":\"superToken\",\"type\":\"address\"}],\"name\":\"createTap\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"deactivateTap\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"name\":\"getTapId\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"createTap(string,address,uint96,uint256,address)\":{\"params\":{\"amount\":\"Amount of super token used to top-up the tap balance.\",\"name\":\"Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.\",\"nft\":\"The NFT address for which a tap is being created.\",\"ratePerNFT\":\"Stream rate for the super token distribution.\",\"superToken\":\"The super token to be distributed by the tap.\"}},\"getTapId(string,address,address)\":{\"details\":\"Uses keccak256 and abi.encode on the arguments.\",\"params\":{\"creator\":\"Tap creator's address.\",\"name\":\"Name of the tap. Has to be unique per creator and NFT.\",\"nft\":\"Address of the NFT.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"createTap(string,address,uint96,uint256,address)\":{\"notice\":\"This function creates a tap for a creator to distribute a particular supertoken.\"},\"getTapId(string,address,address)\":{\"notice\":\"Gives the tap id for a particular name, NFT address and a creator address.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/ITapWizard.sol\":\"ITapWizard\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":protocol-monorepo/=lib/protocol-monorepo/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol\":{\"keccak256\":\"0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1\",\"dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol\":{\"keccak256\":\"0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8\",\"dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol\":{\"keccak256\":\"0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820\",\"dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol\":{\"keccak256\":\"0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e\",\"dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol\":{\"keccak256\":\"0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0\",\"dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol\":{\"keccak256\":\"0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c\",\"dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol\":{\"keccak256\":\"0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885\",\"dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol\":{\"keccak256\":\"0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a\",\"dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol\":{\"keccak256\":\"0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80\",\"dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol\":{\"keccak256\":\"0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae\",\"dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol\":{\"keccak256\":\"0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042\",\"dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg\"]},\"src/interfaces/ITapWizard.sol\":{\"keccak256\":\"0xe0d34a778550556d53597f4ad18e68c6465343eaa375fd6ad31b6a12a2e92c98\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://eded397fa0501b399705cef21e4573f396d82d13934da47741008eb1f1600994\",\"dweb:/ipfs/QmYrFnNtJhJxV7RmrGNcSSoStE8wD8m3hxHGiyzdwkdEoo\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.16+commit.07a7930e"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "type": "error",
+          "name": "NotTapCreator"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint96",
+              "name": "ratePerNFT",
+              "type": "uint96"
+            }
+          ],
+          "type": "error",
+          "name": "SameTapRate"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "type": "error",
+          "name": "TapActive"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "type": "error",
+          "name": "TapExists"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "type": "error",
+          "name": "TapInactive"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "ZeroAddress"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "TapActivated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string",
+              "indexed": false
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address",
+              "indexed": false
+            },
+            {
+              "internalType": "address",
+              "name": "nft",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "superToken",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "TapCreated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "TapDeactivated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32",
+              "indexed": true
+            },
+            {
+              "internalType": "uint96",
+              "name": "oldRatePerNFT",
+              "type": "uint96",
+              "indexed": false
+            },
+            {
+              "internalType": "uint96",
+              "name": "newRatePerNFT",
+              "type": "uint96",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "TapRateChanged",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "activateTap"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint96",
+              "name": "newRatePerNFT",
+              "type": "uint96"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "changeRate"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "nft",
+              "type": "address"
+            },
+            {
+              "internalType": "uint96",
+              "name": "ratePerNFT",
+              "type": "uint96"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract ISuperToken",
+              "name": "superToken",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "createTap",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "deactivateTap"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "nft",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function",
+          "name": "getTapId",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "createTap(string,address,uint96,uint256,address)": {
+            "params": {
+              "amount": "Amount of super token used to top-up the tap balance.",
+              "name": "Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.",
+              "nft": "The NFT address for which a tap is being created.",
+              "ratePerNFT": "Stream rate for the super token distribution.",
+              "superToken": "The super token to be distributed by the tap."
+            }
+          },
+          "getTapId(string,address,address)": {
+            "details": "Uses keccak256 and abi.encode on the arguments.",
+            "params": {
+              "creator": "Tap creator's address.",
+              "name": "Name of the tap. Has to be unique per creator and NFT.",
+              "nft": "Address of the NFT."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "createTap(string,address,uint96,uint256,address)": {
+            "notice": "This function creates a tap for a creator to distribute a particular supertoken."
+          },
+          "getTapId(string,address,address)": {
+            "notice": "Gives the tap id for a particular name, NFT address and a creator address."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+        ":protocol-monorepo/=lib/protocol-monorepo/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/interfaces/ITapWizard.sol": "ITapWizard"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+        "keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+        "urls": [
+          "bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+          "dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol": {
+        "keccak256": "0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553",
+        "urls": [
+          "bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1",
+          "dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im"
+        ],
+        "license": "MIT"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol": {
+        "keccak256": "0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2",
+        "urls": [
+          "bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8",
+          "dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol": {
+        "keccak256": "0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e",
+        "urls": [
+          "bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820",
+          "dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol": {
+        "keccak256": "0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f",
+        "urls": [
+          "bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e",
+          "dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol": {
+        "keccak256": "0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995",
+        "urls": [
+          "bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0",
+          "dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol": {
+        "keccak256": "0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946",
+        "urls": [
+          "bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c",
+          "dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol": {
+        "keccak256": "0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890",
+        "urls": [
+          "bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885",
+          "dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol": {
+        "keccak256": "0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1",
+        "urls": [
+          "bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a",
+          "dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol": {
+        "keccak256": "0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99",
+        "urls": [
+          "bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80",
+          "dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol": {
+        "keccak256": "0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f",
+        "urls": [
+          "bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae",
+          "dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol": {
+        "keccak256": "0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4",
+        "urls": [
+          "bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042",
+          "dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg"
+        ],
+        "license": "AGPLv3"
+      },
+      "src/interfaces/ITapWizard.sol": {
+        "keccak256": "0xe0d34a778550556d53597f4ad18e68c6465343eaa375fd6ad31b6a12a2e92c98",
+        "urls": [
+          "bzz-raw://eded397fa0501b399705cef21e4573f396d82d13934da47741008eb1f1600994",
+          "dweb:/ipfs/QmYrFnNtJhJxV7RmrGNcSSoStE8wD8m3hxHGiyzdwkdEoo"
+        ],
+        "license": "SEE LICENSE IN LICENSE"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/interfaces/ITapWizard.sol",
+    "id": 5725,
+    "exportedSymbols": {
+      "ISuperToken": [
+        4054
+      ],
+      "ISuperfluid": [
+        4656
+      ],
+      "ITapWizard": [
+        5724
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "51:2794:21",
+    "nodes": [
+      {
+        "id": 5602,
+        "nodeType": "PragmaDirective",
+        "src": "51:24:21",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".15"
+        ]
+      },
+      {
+        "id": 5605,
+        "nodeType": "ImportDirective",
+        "src": "77:135:21",
+        "nodes": [],
+        "absolutePath": "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "file": "protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 5725,
+        "sourceUnit": 4657,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 5603,
+              "name": "ISuperfluid",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 4656,
+              "src": "85:11:21",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 5604,
+              "name": "ISuperToken",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 4054,
+              "src": "98:11:21",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 5724,
+        "nodeType": "ContractDefinition",
+        "src": "214:2630:21",
+        "nodes": [
+          {
+            "id": 5625,
+            "nodeType": "StructDefinition",
+            "src": "659:250:21",
+            "nodes": [],
+            "canonicalName": "ITapWizard.Tap",
+            "members": [
+              {
+                "constant": false,
+                "id": 5607,
+                "mutability": "mutable",
+                "name": "active",
+                "nameLocation": "685:6:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "680:11:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 5606,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "680:4:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5609,
+                "mutability": "mutable",
+                "name": "ratePerNFT",
+                "nameLocation": "708:10:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "701:17:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint96",
+                  "typeString": "uint96"
+                },
+                "typeName": {
+                  "id": 5608,
+                  "name": "uint96",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "701:6:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5611,
+                "mutability": "mutable",
+                "name": "lastUpdateTime",
+                "nameLocation": "735:14:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "728:21:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 5610,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "728:6:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5613,
+                "mutability": "mutable",
+                "name": "creator",
+                "nameLocation": "767:7:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "759:15:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 5612,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "759:7:21",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5615,
+                "mutability": "mutable",
+                "name": "nft",
+                "nameLocation": "792:3:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "784:11:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 5614,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "784:7:21",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5617,
+                "mutability": "mutable",
+                "name": "balance",
+                "nameLocation": "813:7:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "805:15:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5616,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "805:7:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5619,
+                "mutability": "mutable",
+                "name": "numStreams",
+                "nameLocation": "838:10:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "830:18:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5618,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "830:7:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5621,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "865:4:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "858:11:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 5620,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "858:6:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5624,
+                "mutability": "mutable",
+                "name": "streamToken",
+                "nameLocation": "891:11:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 5625,
+                "src": "879:23:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_ISuperToken_$4054",
+                  "typeString": "contract ISuperToken"
+                },
+                "typeName": {
+                  "id": 5623,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 5622,
+                    "name": "ISuperToken",
+                    "nameLocations": [
+                      "879:11:21"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 4054,
+                    "src": "879:11:21"
+                  },
+                  "referencedDeclaration": 4054,
+                  "src": "879:11:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$4054",
+                    "typeString": "contract ISuperToken"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Tap",
+            "nameLocation": "666:3:21",
+            "scope": 5724,
+            "visibility": "public"
+          },
+          {
+            "id": 5637,
+            "nodeType": "EventDefinition",
+            "src": "915:162:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "c0a0636877596c021deaa3f2f427f5d353f70ee6ec31b866a6de5cd9d9851b09",
+            "name": "TapCreated",
+            "nameLocation": "921:10:21",
+            "parameters": {
+              "id": 5636,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5627,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "948:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5637,
+                  "src": "941:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 5626,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "941:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5629,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "creator",
+                  "nameLocation": "970:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5637,
+                  "src": "962:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5628,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "962:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5631,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "nft",
+                  "nameLocation": "1003:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5637,
+                  "src": "987:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5630,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "987:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5633,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nameLocation": "1032:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5637,
+                  "src": "1016:26:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5632,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1016:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5635,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1068:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5637,
+                  "src": "1052:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5634,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1052:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "931:145:21"
+            }
+          },
+          {
+            "id": 5641,
+            "nodeType": "EventDefinition",
+            "src": "1082:39:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "f3e95e14ea8c26d74670bedf251c9a33eefe5b6c19f2573a0a684dac336a7115",
+            "name": "TapActivated",
+            "nameLocation": "1088:12:21",
+            "parameters": {
+              "id": 5640,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5639,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1117:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5641,
+                  "src": "1101:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5638,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1101:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1100:20:21"
+            }
+          },
+          {
+            "id": 5645,
+            "nodeType": "EventDefinition",
+            "src": "1126:41:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "bfa6c15014a85dab1b077cee4498d1b079c9ba7bed4c0d4389e613fa7b41e513",
+            "name": "TapDeactivated",
+            "nameLocation": "1132:14:21",
+            "parameters": {
+              "id": 5644,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5643,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1163:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5645,
+                  "src": "1147:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5642,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1147:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1146:20:21"
+            }
+          },
+          {
+            "id": 5653,
+            "nodeType": "EventDefinition",
+            "src": "1172:115:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "a5c51a214c18fd5a68f6ae3ce43be01e167e3de2d30b93e07f0ae19e0fd25862",
+            "name": "TapRateChanged",
+            "nameLocation": "1178:14:21",
+            "parameters": {
+              "id": 5652,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5647,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1218:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5653,
+                  "src": "1202:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5646,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1202:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5649,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldRatePerNFT",
+                  "nameLocation": "1237:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5653,
+                  "src": "1230:20:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 5648,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1230:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5651,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newRatePerNFT",
+                  "nameLocation": "1267:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5653,
+                  "src": "1260:20:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 5650,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1260:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1192:94:21"
+            }
+          },
+          {
+            "id": 5657,
+            "nodeType": "ErrorDefinition",
+            "src": "1293:28:21",
+            "nodes": [],
+            "errorSelector": "7f5268c0",
+            "name": "TapExists",
+            "nameLocation": "1299:9:21",
+            "parameters": {
+              "id": 5656,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5655,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1317:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5657,
+                  "src": "1309:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5654,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1309:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1308:12:21"
+            }
+          },
+          {
+            "id": 5661,
+            "nodeType": "ErrorDefinition",
+            "src": "1326:28:21",
+            "nodes": [],
+            "errorSelector": "5c2a573f",
+            "name": "TapActive",
+            "nameLocation": "1332:9:21",
+            "parameters": {
+              "id": 5660,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5659,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1350:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5661,
+                  "src": "1342:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5658,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1342:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1341:12:21"
+            }
+          },
+          {
+            "id": 5665,
+            "nodeType": "ErrorDefinition",
+            "src": "1359:30:21",
+            "nodes": [],
+            "errorSelector": "86bdcec8",
+            "name": "TapInactive",
+            "nameLocation": "1365:11:21",
+            "parameters": {
+              "id": 5664,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5663,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1385:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5665,
+                  "src": "1377:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5662,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1377:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1376:12:21"
+            }
+          },
+          {
+            "id": 5669,
+            "nodeType": "ErrorDefinition",
+            "src": "1394:32:21",
+            "nodes": [],
+            "errorSelector": "3fee3d63",
+            "name": "NotTapCreator",
+            "nameLocation": "1400:13:21",
+            "parameters": {
+              "id": 5668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5667,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1422:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5669,
+                  "src": "1414:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5666,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1414:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1413:12:21"
+            }
+          },
+          {
+            "id": 5675,
+            "nodeType": "ErrorDefinition",
+            "src": "1431:49:21",
+            "nodes": [],
+            "errorSelector": "b5fd2e46",
+            "name": "SameTapRate",
+            "nameLocation": "1437:11:21",
+            "parameters": {
+              "id": 5674,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5671,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1457:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5675,
+                  "src": "1449:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5670,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1449:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5673,
+                  "mutability": "mutable",
+                  "name": "ratePerNFT",
+                  "nameLocation": "1468:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5675,
+                  "src": "1461:17:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 5672,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1461:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1448:31:21"
+            }
+          },
+          {
+            "id": 5677,
+            "nodeType": "ErrorDefinition",
+            "src": "1485:20:21",
+            "nodes": [],
+            "errorSelector": "d92e233d",
+            "name": "ZeroAddress",
+            "nameLocation": "1491:11:21",
+            "parameters": {
+              "id": 5676,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1502:2:21"
+            }
+          },
+          {
+            "id": 5694,
+            "nodeType": "FunctionDefinition",
+            "src": "2028:187:21",
+            "nodes": [],
+            "documentation": {
+              "id": 5678,
+              "nodeType": "StructuredDocumentation",
+              "src": "1511:512:21",
+              "text": " @notice This function creates a tap for a creator to distribute a particular supertoken.\n @param name Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.\n @param nft The NFT address for which a tap is being created.\n @param ratePerNFT Stream rate for the super token distribution.\n @param amount Amount of super token used to top-up the tap balance.\n @param superToken The super token to be distributed by the tap."
+            },
+            "functionSelector": "1b9432a2",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createTap",
+            "nameLocation": "2037:9:21",
+            "parameters": {
+              "id": 5690,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5680,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "2070:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5694,
+                  "src": "2056:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 5679,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2056:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5682,
+                  "mutability": "mutable",
+                  "name": "nft",
+                  "nameLocation": "2092:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5694,
+                  "src": "2084:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5681,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2084:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5684,
+                  "mutability": "mutable",
+                  "name": "ratePerNFT",
+                  "nameLocation": "2112:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5694,
+                  "src": "2105:17:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 5683,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2105:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5686,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "2140:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5694,
+                  "src": "2132:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5685,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2132:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5689,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nameLocation": "2168:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5694,
+                  "src": "2156:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$4054",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 5688,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 5687,
+                      "name": "ISuperToken",
+                      "nameLocations": [
+                        "2156:11:21"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 4054,
+                      "src": "2156:11:21"
+                    },
+                    "referencedDeclaration": 4054,
+                    "src": "2156:11:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$4054",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2046:138:21"
+            },
+            "returnParameters": {
+              "id": 5693,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5692,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "2211:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5694,
+                  "src": "2203:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5691,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2203:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2202:12:21"
+            },
+            "scope": 5724,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5706,
+            "nodeType": "FunctionDefinition",
+            "src": "2544:133:21",
+            "nodes": [],
+            "documentation": {
+              "id": 5695,
+              "nodeType": "StructuredDocumentation",
+              "src": "2221:318:21",
+              "text": " @notice Gives the tap id for a particular name, NFT address and a creator address.\n @dev Uses keccak256 and abi.encode on the arguments.\n @param name Name of the tap. Has to be unique per creator and NFT.\n @param nft Address of the NFT.\n @param creator Tap creator's address."
+            },
+            "functionSelector": "d5e30f04",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTapId",
+            "nameLocation": "2553:8:21",
+            "parameters": {
+              "id": 5702,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5697,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "2585:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5706,
+                  "src": "2571:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 5696,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2571:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5699,
+                  "mutability": "mutable",
+                  "name": "nft",
+                  "nameLocation": "2607:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5706,
+                  "src": "2599:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5698,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2599:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5701,
+                  "mutability": "mutable",
+                  "name": "creator",
+                  "nameLocation": "2628:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5706,
+                  "src": "2620:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5700,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2620:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2561:80:21"
+            },
+            "returnParameters": {
+              "id": 5705,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5704,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "2673:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5706,
+                  "src": "2665:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5703,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2665:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2664:12:21"
+            },
+            "scope": 5724,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5711,
+            "nodeType": "FunctionDefinition",
+            "src": "2683:42:21",
+            "nodes": [],
+            "functionSelector": "10492623",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activateTap",
+            "nameLocation": "2692:11:21",
+            "parameters": {
+              "id": 5709,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5708,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "2712:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5711,
+                  "src": "2704:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5707,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2704:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2703:12:21"
+            },
+            "returnParameters": {
+              "id": 5710,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2724:0:21"
+            },
+            "scope": 5724,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5716,
+            "nodeType": "FunctionDefinition",
+            "src": "2730:44:21",
+            "nodes": [],
+            "functionSelector": "0fb011aa",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deactivateTap",
+            "nameLocation": "2739:13:21",
+            "parameters": {
+              "id": 5714,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5713,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "2761:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5716,
+                  "src": "2753:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5712,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2753:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2752:12:21"
+            },
+            "returnParameters": {
+              "id": 5715,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2773:0:21"
+            },
+            "scope": 5724,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5723,
+            "nodeType": "FunctionDefinition",
+            "src": "2779:63:21",
+            "nodes": [],
+            "functionSelector": "3b5b977c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "changeRate",
+            "nameLocation": "2788:10:21",
+            "parameters": {
+              "id": 5721,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5718,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "2807:2:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5723,
+                  "src": "2799:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5717,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2799:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5720,
+                  "mutability": "mutable",
+                  "name": "newRatePerNFT",
+                  "nameLocation": "2818:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5723,
+                  "src": "2811:20:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 5719,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2811:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2798:34:21"
+            },
+            "returnParameters": {
+              "id": 5722,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2841:0:21"
+            },
+            "scope": 5724,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITapWizard",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5724
+        ],
+        "name": "ITapWizard",
+        "nameLocation": "224:10:21",
+        "scope": 5725,
+        "usedErrors": [
+          5657,
+          5661,
+          5665,
+          5669,
+          5675,
+          5677
+        ]
+      }
+    ],
+    "license": "SEE LICENSE IN LICENSE"
+  },
+  "id": 21
+}

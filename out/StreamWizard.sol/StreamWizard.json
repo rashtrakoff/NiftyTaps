@@ -1,0 +1,325 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122079cd5525f36e1b54ece4c871bd2f3b103959093890ccee7d8e499a65c4fcdc5c64736f6c63430008100033",
+    "sourceMap": "254:30:15:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600080fdfea264697066735822122079cd5525f36e1b54ece4c871bd2f3b103959093890ccee7d8e499a65c4fcdc5c64736f6c63430008100033",
+    "sourceMap": "254:30:15:-:0;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/StreamWizard.sol\":\"StreamWizard\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":protocol-monorepo/=lib/protocol-monorepo/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x086fbe904291497e1532ef340f1bd589078f49e3d4d0bbfd88f5e02fb89261eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0df1e3e965b78a0d98dda2d1d6a6acde88f515b1d3a9ad02f505e93fa7babeda\",\"dweb:/ipfs/QmW4cSbGriRAj7XRZu6zSaqspe4eyYWkF7WfJbj3rmmLbk\"]},\"lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol\":{\"keccak256\":\"0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1\",\"dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol\":{\"keccak256\":\"0x6b8501cde10ce06296268facb2b504765995eeb948434dbb6292b30e0852a757\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://0ea0a9865ca170dd4b8dd63d298b8b0dc73910242dad0ce567e6a68400c0df0f\",\"dweb:/ipfs/QmfUy1FXn6a6JZW4qE3RUudD1fH7BErNTDTgEPwEcdWCVg\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol\":{\"keccak256\":\"0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8\",\"dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol\":{\"keccak256\":\"0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820\",\"dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol\":{\"keccak256\":\"0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e\",\"dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol\":{\"keccak256\":\"0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0\",\"dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol\":{\"keccak256\":\"0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c\",\"dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol\":{\"keccak256\":\"0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885\",\"dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol\":{\"keccak256\":\"0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a\",\"dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol\":{\"keccak256\":\"0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80\",\"dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol\":{\"keccak256\":\"0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae\",\"dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol\":{\"keccak256\":\"0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042\",\"dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg\"]},\"src/StreamWizard.sol\":{\"keccak256\":\"0xf4ee147c2f26c63d60cb6d424f559ea7660b8841f5d48d2a86629d68979c4c5a\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://eda81baf479428168d6126840f400e4ba7736fb6b736838e12a8f68e32c4cc98\",\"dweb:/ipfs/QmT7RzrzcLKQxTSwYQgJR6fqRVweQg46HmexagCEZKP9pD\"]},\"src/interfaces/IERC20Mod.sol\":{\"keccak256\":\"0x37d8289a288d75dffb8d0472c3acfb4bd9b9866a8a8df2ca1b2a33e69f3d0861\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://9818c52f971ca861ebeaf7e0d0afe5313e49a65d06db1ca8838d34de48bf9334\",\"dweb:/ipfs/QmTi1ANkMySdaUxtdJoDe2DBDnN1SZxLksbsttYL3o11iD\"]},\"src/interfaces/IcfaV1Forwarder.sol\":{\"keccak256\":\"0x93e1acfd961d30da03d31d5cf0e6621f23f6d0f618c669a4dc9aa9d9f2778dd4\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://a92361a2eb3fa033f2a6193c9b68dcd07db9e0130a52c640db9b1b8cc8d409eb\",\"dweb:/ipfs/QmQDZS4t5tPrDXHznSG1PtuBp38vVFDM9W9cc4BSNr4N7i\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.16+commit.07a7930e"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+        ":protocol-monorepo/=lib/protocol-monorepo/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/StreamWizard.sol": "StreamWizard"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+        "keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+        "urls": [
+          "bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+          "dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
+        "keccak256": "0x086fbe904291497e1532ef340f1bd589078f49e3d4d0bbfd88f5e02fb89261eb",
+        "urls": [
+          "bzz-raw://0df1e3e965b78a0d98dda2d1d6a6acde88f515b1d3a9ad02f505e93fa7babeda",
+          "dweb:/ipfs/QmW4cSbGriRAj7XRZu6zSaqspe4eyYWkF7WfJbj3rmmLbk"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol": {
+        "keccak256": "0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553",
+        "urls": [
+          "bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1",
+          "dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+        "keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+        "urls": [
+          "bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+          "dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+        ],
+        "license": "MIT"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol": {
+        "keccak256": "0x6b8501cde10ce06296268facb2b504765995eeb948434dbb6292b30e0852a757",
+        "urls": [
+          "bzz-raw://0ea0a9865ca170dd4b8dd63d298b8b0dc73910242dad0ce567e6a68400c0df0f",
+          "dweb:/ipfs/QmfUy1FXn6a6JZW4qE3RUudD1fH7BErNTDTgEPwEcdWCVg"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol": {
+        "keccak256": "0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2",
+        "urls": [
+          "bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8",
+          "dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol": {
+        "keccak256": "0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e",
+        "urls": [
+          "bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820",
+          "dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol": {
+        "keccak256": "0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f",
+        "urls": [
+          "bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e",
+          "dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol": {
+        "keccak256": "0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995",
+        "urls": [
+          "bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0",
+          "dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol": {
+        "keccak256": "0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946",
+        "urls": [
+          "bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c",
+          "dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol": {
+        "keccak256": "0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890",
+        "urls": [
+          "bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885",
+          "dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol": {
+        "keccak256": "0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1",
+        "urls": [
+          "bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a",
+          "dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol": {
+        "keccak256": "0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99",
+        "urls": [
+          "bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80",
+          "dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol": {
+        "keccak256": "0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f",
+        "urls": [
+          "bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae",
+          "dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol": {
+        "keccak256": "0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4",
+        "urls": [
+          "bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042",
+          "dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg"
+        ],
+        "license": "AGPLv3"
+      },
+      "src/StreamWizard.sol": {
+        "keccak256": "0xf4ee147c2f26c63d60cb6d424f559ea7660b8841f5d48d2a86629d68979c4c5a",
+        "urls": [
+          "bzz-raw://eda81baf479428168d6126840f400e4ba7736fb6b736838e12a8f68e32c4cc98",
+          "dweb:/ipfs/QmT7RzrzcLKQxTSwYQgJR6fqRVweQg46HmexagCEZKP9pD"
+        ],
+        "license": "SEE LICENSE IN LICENSE"
+      },
+      "src/interfaces/IERC20Mod.sol": {
+        "keccak256": "0x37d8289a288d75dffb8d0472c3acfb4bd9b9866a8a8df2ca1b2a33e69f3d0861",
+        "urls": [
+          "bzz-raw://9818c52f971ca861ebeaf7e0d0afe5313e49a65d06db1ca8838d34de48bf9334",
+          "dweb:/ipfs/QmTi1ANkMySdaUxtdJoDe2DBDnN1SZxLksbsttYL3o11iD"
+        ],
+        "license": "SEE LICENSE IN LICENSE"
+      },
+      "src/interfaces/IcfaV1Forwarder.sol": {
+        "keccak256": "0x93e1acfd961d30da03d31d5cf0e6621f23f6d0f618c669a4dc9aa9d9f2778dd4",
+        "urls": [
+          "bzz-raw://a92361a2eb3fa033f2a6193c9b68dcd07db9e0130a52c640db9b1b8cc8d409eb",
+          "dweb:/ipfs/QmQDZS4t5tPrDXHznSG1PtuBp38vVFDM9W9cc4BSNr4N7i"
+        ],
+        "license": "SEE LICENSE IN LICENSE"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/StreamWizard.sol",
+    "id": 2916,
+    "exportedSymbols": {
+      "IERC20": [
+        77
+      ],
+      "IERC20Mod": [
+        2927
+      ],
+      "IERC721": [
+        193
+      ],
+      "IcfaV1Forwarder": [
+        3068
+      ],
+      "StreamWizard": [
+        2915
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "51:233:15",
+    "nodes": [
+      {
+        "id": 2909,
+        "nodeType": "PragmaDirective",
+        "src": "51:24:15",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".15"
+        ]
+      },
+      {
+        "id": 2911,
+        "nodeType": "ImportDirective",
+        "src": "77:72:15",
+        "nodes": [],
+        "absolutePath": "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
+        "file": "openzeppelin-contracts/token/ERC721/IERC721.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 2916,
+        "sourceUnit": 194,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2910,
+              "name": "IERC721",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 193,
+              "src": "85:7:15",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 2913,
+        "nodeType": "ImportDirective",
+        "src": "150:65:15",
+        "nodes": [],
+        "absolutePath": "src/interfaces/IcfaV1Forwarder.sol",
+        "file": "./interfaces/IcfaV1Forwarder.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 2916,
+        "sourceUnit": 3069,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2912,
+              "name": "IcfaV1Forwarder",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3068,
+              "src": "158:15:15",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 2914,
+        "nodeType": "ImportDirective",
+        "src": "216:36:15",
+        "nodes": [],
+        "absolutePath": "src/interfaces/IERC20Mod.sol",
+        "file": "./interfaces/IERC20Mod.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 2916,
+        "sourceUnit": 2928,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 2915,
+        "nodeType": "ContractDefinition",
+        "src": "254:30:15",
+        "nodes": [],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "StreamWizard",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          2915
+        ],
+        "name": "StreamWizard",
+        "nameLocation": "263:12:15",
+        "scope": 2916,
+        "usedErrors": []
+      }
+    ],
+    "license": "SEE LICENSE IN LICENSE"
+  },
+  "id": 15
+}
