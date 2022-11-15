@@ -38,6 +38,12 @@ interface ITapWizard {
         uint96 oldRatePerNFT,
         uint96 newRatePerNFT
     );
+    event StreamsClaimed(
+        bytes32 indexed id,
+        address indexed claimant,
+        int96 oldStreamRate,
+        int96 newStreamRate
+    );
 
     error TapExists(bytes32 id);
     error TapActive(bytes32 id);
@@ -45,6 +51,7 @@ interface ITapWizard {
     error NotTapCreator(bytes32 id);
     error SameTapRate(bytes32 id, uint96 ratePerNFT);
     error ZeroAddress();
+    error MethodPaused();
 
     /**
      * @notice This function creates a tap for a creator to distribute a particular supertoken.
@@ -76,6 +83,8 @@ interface ITapWizard {
     ) external pure returns (bytes32 id);
 
     function activateTap(bytes32 id) external;
+
     function deactivateTap(bytes32 id) external;
+
     function changeRate(bytes32 id, uint96 newRatePerNFT) external;
 }

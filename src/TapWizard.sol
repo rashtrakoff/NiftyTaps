@@ -73,10 +73,15 @@ contract TapWizard is ITapWizard {
     // Of course batching could be done but the problem of providing all the NFT ids still remains.
     // The workaround for now is that I will create another method for claims by `tokenIds`.
     function claimStream(bytes32 _id) external {
+        if (pauseBulkClaims) revert MethodPaused();
+
         Tap storage tap = Taps[_id];
 
+        if(!tap.active) revert TapInactive(_id);
+
         // 1. Check if the holder has the NFT corresponding to the tap id given.
-        // 2. Check if the total outgoing stream is equivalent to the calculated outgoing streams.
+        // 2. TODO Check if the balance of the tap is at greater than deposit amount required for opening the streams.
+        // 3. Check if the total outgoing stream is equivalent to the calculated outgoing streams.
         //  - If yes, then no new stream can be claimed.
         //  - Else, start a new stream to match the calculated outgoing stream value for the holder.
         // Optional:
@@ -84,7 +89,7 @@ contract TapWizard is ITapWizard {
         //  - If yes, then proceed.
         //  - Else, ask the Stroller contract for the funds to at least cover the deposit amount required for starting
         //    a new stream (if don't already have it).
-        // 3. Increase the numStreams value of the tap to match the outgoing streams of the tap.
+        // 4. Increase the numStreams value of the tap to match the outgoing streams of the tap.
         // Note: When starting a new stream, account for the deposit amount worth of tokens.
 
         ISuperToken streamToken = tap.streamToken;
@@ -116,6 +121,14 @@ contract TapWizard is ITapWizard {
         );
 
         tap.numStreams += uint96(outStreamRate) / ratePerNFT;
+
+        emit StreamsClaimed(_id, msg.sender, acOutStreamRate, exOutStreamRate);
+    }
+
+    function claimStream(bytes32 _id, uint256 _tokenId) external {
+        Tap storage tap = Taps[_id];
+
+        // TODO: Complete this method.
     }
 
     function changeRate(bytes32 _id, uint96 _newRatePerNFT) external {
@@ -156,7 +169,7 @@ contract TapWizard is ITapWizard {
     function tapBalance(bytes32 _id) public view returns (uint256 _balance) {
         Tap storage tap = Taps[_id];
 
-        // Note: This value can be negative if our keeper fails to close all the streams
+        // TODO: This value can be negative if our keeper fails to close all the streams
         // before the tap's balance runs out. Account for that later.
         _balance =
             tap.balance -
