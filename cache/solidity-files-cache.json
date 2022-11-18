@@ -4297,8 +4297,8 @@
       }
     },
     "src/TapWizard.sol": {
-      "lastModificationDate": 1668531788313,
-      "contentHash": "dd303aaf0fc6e429a648d02236893bf5",
+      "lastModificationDate": 1668754510394,
+      "contentHash": "52f938916e032f7016905f86e47ccb1b",
       "sourceName": "src/TapWizard.sol",
       "solcConfig": {
         "settings": {
@@ -4402,8 +4402,8 @@
       }
     },
     "src/interfaces/ITapWizard.sol": {
-      "lastModificationDate": 1668531801059,
-      "contentHash": "1876e041ad6b53a6d85d646ace77ced7",
+      "lastModificationDate": 1668754113970,
+      "contentHash": "57f5c0513233e5be49e58e91cc3fb7a5",
       "sourceName": "src/interfaces/ITapWizard.sol",
       "solcConfig": {
         "settings": {

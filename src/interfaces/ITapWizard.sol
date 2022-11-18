@@ -38,20 +38,52 @@ interface ITapWizard {
         uint96 oldRatePerNFT,
         uint96 newRatePerNFT
     );
+    event TapToppedUp(
+        bytes32 indexed id,
+        address indexed superToken,
+        uint256 amount
+    );
     event StreamsClaimed(
         bytes32 indexed id,
         address indexed claimant,
         int96 oldStreamRate,
         int96 newStreamRate
     );
+    event StreamClaimedById(
+        bytes32 indexed id,
+        address indexed claimant,
+        uint256 tokenId
+    );
+    event TapDrained(
+        bytes32 indexed id,
+        address indexed streamToken,
+        uint256 drainAmount,
+        uint256 remainingAmount
+    );
 
+    error ZeroAddress();
+    error BulkClaimsPaused();
     error TapExists(bytes32 id);
+    error TapNotFound(bytes32 id);
     error TapActive(bytes32 id);
     error TapInactive(bytes32 id);
     error NotTapCreator(bytes32 id);
     error SameTapRate(bytes32 id, uint96 ratePerNFT);
-    error ZeroAddress();
-    error MethodPaused();
+    error IneligibleClaim(bytes32 id);
+    error NotOwnerOfNFT(bytes32 id, uint256 tokenId);
+    error StreamAlreadyClaimed(bytes32 id, uint256 tokenId);
+    error StreamNotFound(bytes32 id, uint256 tokenId);
+    error WrongStreamCloseAttempt(bytes32 id, uint256 tokenId);
+    error TapMinAmountLimit(
+        bytes32 id,
+        uint256 remainingAmount,
+        uint256 minAmountRequried
+    );
+    error TapBalanceInsufficient(
+        bytes32 id,
+        uint256 currTapBalance,
+        uint256 reqTapBalance
+    );
 
     /**
      * @notice This function creates a tap for a creator to distribute a particular supertoken.
