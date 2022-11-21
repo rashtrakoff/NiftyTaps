@@ -1,0 +1,2696 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "BulkClaimsPaused",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        }
+      ],
+      "name": "HolderStreamsNotFound",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "IneligibleClaim",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "terminator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "currTapBalance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minReqTapBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "NoEmergency",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "terminator",
+          "type": "address"
+        }
+      ],
+      "name": "NotHost",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "NotOwnerOfNFT",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotTapCreator",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int96",
+          "name": "ratePerNFT",
+          "type": "int96"
+        }
+      ],
+      "name": "SameTapRate",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "StreamAlreadyClaimed",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "StreamNotFound",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "prevHolder",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "currHolder",
+          "type": "address"
+        }
+      ],
+      "name": "StreamsAdjustmentsFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TapActive",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "currTapBalance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "reqTapBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "TapBalanceInsufficient",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TapExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TapInactive",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "remainingAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minAmountRequried",
+          "type": "uint256"
+        }
+      ],
+      "name": "TapMinAmountLimit",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TapNotFound",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "terminator",
+          "type": "address"
+        }
+      ],
+      "name": "WrongStreamCloseAttempt",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        }
+      ],
+      "name": "EmergencyCloseInitiated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "claimant",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "StreamClaimedById",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "claimant",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int96",
+          "name": "oldStreamRate",
+          "type": "int96"
+        },
+        {
+          "indexed": false,
+          "internalType": "int96",
+          "name": "newStreamRate",
+          "type": "int96"
+        }
+      ],
+      "name": "StreamsClaimed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "TapActivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "nft",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "superToken",
+          "type": "address"
+        }
+      ],
+      "name": "TapCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "TapDeactivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "streamToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "drainAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "remainingAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "TapDrained",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "int96",
+          "name": "oldRatePerNFT",
+          "type": "int96"
+        },
+        {
+          "indexed": false,
+          "internalType": "int96",
+          "name": "newRatePerNFT",
+          "type": "int96"
+        }
+      ],
+      "name": "TapRateChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "TapToppedUp",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "activateTap",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint96",
+          "name": "newRatePerNFT",
+          "type": "uint96"
+        }
+      ],
+      "name": "changeRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "deactivateTap",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "activateTap()": "8cf79999",
+    "changeRate(uint96)": "1c8da209",
+    "deactivateTap()": "48addb5c"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"BulkClaimsPaused\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"}],\"name\":\"HolderStreamsNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"IneligibleClaim\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"terminator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"currTapBalance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"minReqTapBalance\",\"type\":\"uint256\"}],\"name\":\"NoEmergency\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"terminator\",\"type\":\"address\"}],\"name\":\"NotHost\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"NotOwnerOfNFT\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotTapCreator\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"int96\",\"name\":\"ratePerNFT\",\"type\":\"int96\"}],\"name\":\"SameTapRate\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"StreamAlreadyClaimed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"StreamNotFound\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"prevHolder\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"currHolder\",\"type\":\"address\"}],\"name\":\"StreamsAdjustmentsFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TapActive\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"currTapBalance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reqTapBalance\",\"type\":\"uint256\"}],\"name\":\"TapBalanceInsufficient\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TapExists\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TapInactive\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"remainingAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"minAmountRequried\",\"type\":\"uint256\"}],\"name\":\"TapMinAmountLimit\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TapNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TransferFailed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"terminator\",\"type\":\"address\"}],\"name\":\"WrongStreamCloseAttempt\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"}],\"name\":\"EmergencyCloseInitiated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"claimant\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"StreamClaimedById\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"claimant\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"int96\",\"name\":\"oldStreamRate\",\"type\":\"int96\"},{\"indexed\":false,\"internalType\":\"int96\",\"name\":\"newStreamRate\",\"type\":\"int96\"}],\"name\":\"StreamsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"TapActivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"}],\"name\":\"TapCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"TapDeactivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"streamToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"drainAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"remainingAmount\",\"type\":\"uint256\"}],\"name\":\"TapDrained\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"int96\",\"name\":\"oldRatePerNFT\",\"type\":\"int96\"},{\"indexed\":false,\"internalType\":\"int96\",\"name\":\"newRatePerNFT\",\"type\":\"int96\"}],\"name\":\"TapRateChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TapToppedUp\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"activateTap\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint96\",\"name\":\"newRatePerNFT\",\"type\":\"uint96\"}],\"name\":\"changeRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"deactivateTap\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/ITap.sol\":\"ITap\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":protocol-monorepo/=lib/protocol-monorepo/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol\":{\"keccak256\":\"0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1\",\"dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol\":{\"keccak256\":\"0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8\",\"dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol\":{\"keccak256\":\"0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820\",\"dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol\":{\"keccak256\":\"0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e\",\"dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol\":{\"keccak256\":\"0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0\",\"dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol\":{\"keccak256\":\"0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c\",\"dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol\":{\"keccak256\":\"0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885\",\"dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol\":{\"keccak256\":\"0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a\",\"dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol\":{\"keccak256\":\"0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80\",\"dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol\":{\"keccak256\":\"0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae\",\"dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol\":{\"keccak256\":\"0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042\",\"dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg\"]},\"src/interfaces/ITap.sol\":{\"keccak256\":\"0x56b2c6c1113d19d074e57751fbc75bbf851a23a0f96b042bc61d94863bff19e2\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://20a7f5e2d95d029ef1a9c3f9400f09e1535cf8b2d31ba9c31ea7ed753029a114\",\"dweb:/ipfs/QmXmftk3wfe46prkZi7cM4EDvQ2kP4ZFaAqN5VGFTYbzJo\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.16+commit.07a7930e"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "BulkClaimsPaused"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "holder",
+              "type": "address"
+            }
+          ],
+          "type": "error",
+          "name": "HolderStreamsNotFound"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "IneligibleClaim"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "terminator",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "holder",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "currTapBalance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minReqTapBalance",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "NoEmergency"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "terminator",
+              "type": "address"
+            }
+          ],
+          "type": "error",
+          "name": "NotHost"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "NotOwnerOfNFT"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "NotTapCreator"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "int96",
+              "name": "ratePerNFT",
+              "type": "int96"
+            }
+          ],
+          "type": "error",
+          "name": "SameTapRate"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "StreamAlreadyClaimed"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "StreamNotFound"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "prevHolder",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "currHolder",
+              "type": "address"
+            }
+          ],
+          "type": "error",
+          "name": "StreamsAdjustmentsFailed"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "TapActive"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "currTapBalance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reqTapBalance",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "TapBalanceInsufficient"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "TapExists"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "TapInactive"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "remainingAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minAmountRequried",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "TapMinAmountLimit"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "TapNotFound"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "TransferFailed"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "terminator",
+              "type": "address"
+            }
+          ],
+          "type": "error",
+          "name": "WrongStreamCloseAttempt"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "ZeroAddress"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "holder",
+              "type": "address",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "EmergencyCloseInitiated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "claimant",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "StreamClaimedById",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "claimant",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "int96",
+              "name": "oldStreamRate",
+              "type": "int96",
+              "indexed": false
+            },
+            {
+              "internalType": "int96",
+              "name": "newStreamRate",
+              "type": "int96",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "StreamsClaimed",
+          "anonymous": false
+        },
+        {
+          "inputs": [],
+          "type": "event",
+          "name": "TapActivated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string",
+              "indexed": false
+            },
+            {
+              "internalType": "address",
+              "name": "creator",
+              "type": "address",
+              "indexed": false
+            },
+            {
+              "internalType": "address",
+              "name": "nft",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "superToken",
+              "type": "address",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "TapCreated",
+          "anonymous": false
+        },
+        {
+          "inputs": [],
+          "type": "event",
+          "name": "TapDeactivated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "streamToken",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint256",
+              "name": "drainAmount",
+              "type": "uint256",
+              "indexed": false
+            },
+            {
+              "internalType": "uint256",
+              "name": "remainingAmount",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "TapDrained",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "int96",
+              "name": "oldRatePerNFT",
+              "type": "int96",
+              "indexed": false
+            },
+            {
+              "internalType": "int96",
+              "name": "newRatePerNFT",
+              "type": "int96",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "TapRateChanged",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "superToken",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "TapToppedUp",
+          "anonymous": false
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "activateTap"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint96",
+              "name": "newRatePerNFT",
+              "type": "uint96"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "changeRate"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "deactivateTap"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+        ":protocol-monorepo/=lib/protocol-monorepo/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/interfaces/ITap.sol": "ITap"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+        "keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+        "urls": [
+          "bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+          "dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+        ],
+        "license": "MIT"
+      },
+      "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol": {
+        "keccak256": "0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553",
+        "urls": [
+          "bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1",
+          "dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im"
+        ],
+        "license": "MIT"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol": {
+        "keccak256": "0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2",
+        "urls": [
+          "bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8",
+          "dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol": {
+        "keccak256": "0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e",
+        "urls": [
+          "bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820",
+          "dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol": {
+        "keccak256": "0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f",
+        "urls": [
+          "bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e",
+          "dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol": {
+        "keccak256": "0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995",
+        "urls": [
+          "bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0",
+          "dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol": {
+        "keccak256": "0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946",
+        "urls": [
+          "bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c",
+          "dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol": {
+        "keccak256": "0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890",
+        "urls": [
+          "bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885",
+          "dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol": {
+        "keccak256": "0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1",
+        "urls": [
+          "bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a",
+          "dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol": {
+        "keccak256": "0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99",
+        "urls": [
+          "bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80",
+          "dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol": {
+        "keccak256": "0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f",
+        "urls": [
+          "bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae",
+          "dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh"
+        ],
+        "license": "AGPLv3"
+      },
+      "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol": {
+        "keccak256": "0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4",
+        "urls": [
+          "bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042",
+          "dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg"
+        ],
+        "license": "AGPLv3"
+      },
+      "src/interfaces/ITap.sol": {
+        "keccak256": "0x56b2c6c1113d19d074e57751fbc75bbf851a23a0f96b042bc61d94863bff19e2",
+        "urls": [
+          "bzz-raw://20a7f5e2d95d029ef1a9c3f9400f09e1535cf8b2d31ba9c31ea7ed753029a114",
+          "dweb:/ipfs/QmXmftk3wfe46prkZi7cM4EDvQ2kP4ZFaAqN5VGFTYbzJo"
+        ],
+        "license": "SEE LICENSE IN LICENSE"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/interfaces/ITap.sol",
+    "id": 6582,
+    "exportedSymbols": {
+      "ISuperToken": [
+        4202
+      ],
+      "ISuperfluid": [
+        4804
+      ],
+      "ITap": [
+        6581
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "51:2198:21",
+    "nodes": [
+      {
+        "id": 6431,
+        "nodeType": "PragmaDirective",
+        "src": "51:24:21",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".15"
+        ]
+      },
+      {
+        "id": 6434,
+        "nodeType": "ImportDirective",
+        "src": "77:135:21",
+        "nodes": [],
+        "absolutePath": "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "file": "protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 6582,
+        "sourceUnit": 4805,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 6432,
+              "name": "ISuperfluid",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 4804,
+              "src": "85:11:21",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 6433,
+              "name": "ISuperToken",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 4202,
+              "src": "98:11:21",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 6581,
+        "nodeType": "ContractDefinition",
+        "src": "214:2034:21",
+        "nodes": [
+          {
+            "id": 6441,
+            "nodeType": "StructDefinition",
+            "src": "305:139:21",
+            "nodes": [],
+            "canonicalName": "ITap.ClaimedData",
+            "members": [
+              {
+                "constant": false,
+                "id": 6436,
+                "mutability": "mutable",
+                "name": "claimedRate",
+                "nameLocation": "340:11:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 6441,
+                "src": "334:17:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int96",
+                  "typeString": "int96"
+                },
+                "typeName": {
+                  "id": 6435,
+                  "name": "int96",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "334:5:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6440,
+                "mutability": "mutable",
+                "name": "isClaimedId",
+                "nameLocation": "426:11:21",
+                "nodeType": "VariableDeclaration",
+                "scope": 6441,
+                "src": "401:36:21",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                  "typeString": "mapping(uint256 => bool)"
+                },
+                "typeName": {
+                  "id": 6439,
+                  "keyType": {
+                    "id": 6437,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "409:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "401:24:21",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                    "typeString": "mapping(uint256 => bool)"
+                  },
+                  "valueType": {
+                    "id": 6438,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "420:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ClaimedData",
+            "nameLocation": "312:11:21",
+            "scope": 6581,
+            "visibility": "public"
+          },
+          {
+            "id": 6451,
+            "nodeType": "EventDefinition",
+            "src": "450:134:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "45c022b6e7b90463614d292a3811fdbd813aa602a88ba62513f0998f2c86bf07",
+            "name": "TapCreated",
+            "nameLocation": "456:10:21",
+            "parameters": {
+              "id": 6450,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6443,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "483:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6451,
+                  "src": "476:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6442,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "476:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6445,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "creator",
+                  "nameLocation": "505:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6451,
+                  "src": "497:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6444,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "497:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6447,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "nft",
+                  "nameLocation": "538:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6451,
+                  "src": "522:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6446,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "522:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6449,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nameLocation": "567:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6451,
+                  "src": "551:26:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6448,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "551:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "466:117:21"
+            }
+          },
+          {
+            "id": 6453,
+            "nodeType": "EventDefinition",
+            "src": "589:21:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "095fdebb45b4f1fd3f76ce7a07f113fafa6da5fcd60d6983ab22693fe29d1ecd",
+            "name": "TapActivated",
+            "nameLocation": "595:12:21",
+            "parameters": {
+              "id": 6452,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "607:2:21"
+            }
+          },
+          {
+            "id": 6455,
+            "nodeType": "EventDefinition",
+            "src": "615:23:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "3a15dda76c298a039674b2287c867ba88f2236e2d01b54ba865ead2965703864",
+            "name": "TapDeactivated",
+            "nameLocation": "621:14:21",
+            "parameters": {
+              "id": 6454,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "635:2:21"
+            }
+          },
+          {
+            "id": 6461,
+            "nodeType": "EventDefinition",
+            "src": "643:63:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "3f4f15794d3d6909eeffd3c852e9ade086118bf01ed932cd7c40fca47501b6fb",
+            "name": "TapRateChanged",
+            "nameLocation": "649:14:21",
+            "parameters": {
+              "id": 6460,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6457,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldRatePerNFT",
+                  "nameLocation": "670:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6461,
+                  "src": "664:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 6456,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "664:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6459,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newRatePerNFT",
+                  "nameLocation": "691:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6461,
+                  "src": "685:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 6458,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "685:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "663:42:21"
+            }
+          },
+          {
+            "id": 6467,
+            "nodeType": "EventDefinition",
+            "src": "711:62:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "6af4f348b0a94b3ecbd7d24059de3fd8ffb635abb46124d9effb1f88a995c7cc",
+            "name": "TapToppedUp",
+            "nameLocation": "717:11:21",
+            "parameters": {
+              "id": 6466,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6463,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nameLocation": "745:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6467,
+                  "src": "729:26:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6462,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "729:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6465,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "765:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6467,
+                  "src": "757:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6464,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "757:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "728:44:21"
+            }
+          },
+          {
+            "id": 6475,
+            "nodeType": "EventDefinition",
+            "src": "778:119:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "57f24b7122d73f87b92d591375b9eafc04e5b1bd57b469deccd278e92217ccbf",
+            "name": "StreamsClaimed",
+            "nameLocation": "784:14:21",
+            "parameters": {
+              "id": 6474,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6469,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "claimant",
+                  "nameLocation": "824:8:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6475,
+                  "src": "808:24:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6468,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "808:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6471,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldStreamRate",
+                  "nameLocation": "848:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6475,
+                  "src": "842:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 6470,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "842:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6473,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newStreamRate",
+                  "nameLocation": "877:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6475,
+                  "src": "871:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 6472,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "871:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "798:98:21"
+            }
+          },
+          {
+            "id": 6481,
+            "nodeType": "EventDefinition",
+            "src": "902:67:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "90a5a57b652df5b9c4b1245c11aee7c6ba100d224871367c81229f8833b3f29c",
+            "name": "StreamClaimedById",
+            "nameLocation": "908:17:21",
+            "parameters": {
+              "id": 6480,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6477,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "claimant",
+                  "nameLocation": "942:8:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6481,
+                  "src": "926:24:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6476,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "926:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6479,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "960:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6481,
+                  "src": "952:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6478,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "952:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "925:43:21"
+            }
+          },
+          {
+            "id": 6485,
+            "nodeType": "EventDefinition",
+            "src": "974:54:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "15ed2cc902282ba6d45db1192488213eaca35dffb37edec22aacf8cbf408c24e",
+            "name": "EmergencyCloseInitiated",
+            "nameLocation": "980:23:21",
+            "parameters": {
+              "id": 6484,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6483,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1020:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6485,
+                  "src": "1004:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6482,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1004:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1003:24:21"
+            }
+          },
+          {
+            "id": 6493,
+            "nodeType": "EventDefinition",
+            "src": "1033:122:21",
+            "nodes": [],
+            "anonymous": false,
+            "eventSelector": "4a8ab7bc7b0ca9f36a3042b149f077408a1e0342c4dd28c99d24c34767e6cdfd",
+            "name": "TapDrained",
+            "nameLocation": "1039:10:21",
+            "parameters": {
+              "id": 6492,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6487,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "streamToken",
+                  "nameLocation": "1075:11:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6493,
+                  "src": "1059:27:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6486,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1059:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6489,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "drainAmount",
+                  "nameLocation": "1104:11:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6493,
+                  "src": "1096:19:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6488,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1096:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6491,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "remainingAmount",
+                  "nameLocation": "1133:15:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6493,
+                  "src": "1125:23:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6490,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1125:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1049:105:21"
+            }
+          },
+          {
+            "id": 6495,
+            "nodeType": "ErrorDefinition",
+            "src": "1161:20:21",
+            "nodes": [],
+            "errorSelector": "d92e233d",
+            "name": "ZeroAddress",
+            "nameLocation": "1167:11:21",
+            "parameters": {
+              "id": 6494,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1178:2:21"
+            }
+          },
+          {
+            "id": 6497,
+            "nodeType": "ErrorDefinition",
+            "src": "1186:23:21",
+            "nodes": [],
+            "errorSelector": "90b8ec18",
+            "name": "TransferFailed",
+            "nameLocation": "1192:14:21",
+            "parameters": {
+              "id": 6496,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1206:2:21"
+            }
+          },
+          {
+            "id": 6499,
+            "nodeType": "ErrorDefinition",
+            "src": "1214:25:21",
+            "nodes": [],
+            "errorSelector": "dc1772fd",
+            "name": "BulkClaimsPaused",
+            "nameLocation": "1220:16:21",
+            "parameters": {
+              "id": 6498,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1236:2:21"
+            }
+          },
+          {
+            "id": 6501,
+            "nodeType": "ErrorDefinition",
+            "src": "1244:18:21",
+            "nodes": [],
+            "errorSelector": "3ea1498a",
+            "name": "TapExists",
+            "nameLocation": "1250:9:21",
+            "parameters": {
+              "id": 6500,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1259:2:21"
+            }
+          },
+          {
+            "id": 6503,
+            "nodeType": "ErrorDefinition",
+            "src": "1267:20:21",
+            "nodes": [],
+            "errorSelector": "855a3c98",
+            "name": "TapNotFound",
+            "nameLocation": "1273:11:21",
+            "parameters": {
+              "id": 6502,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1284:2:21"
+            }
+          },
+          {
+            "id": 6505,
+            "nodeType": "ErrorDefinition",
+            "src": "1292:18:21",
+            "nodes": [],
+            "errorSelector": "43d7e32e",
+            "name": "TapActive",
+            "nameLocation": "1298:9:21",
+            "parameters": {
+              "id": 6504,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1307:2:21"
+            }
+          },
+          {
+            "id": 6507,
+            "nodeType": "ErrorDefinition",
+            "src": "1315:20:21",
+            "nodes": [],
+            "errorSelector": "24ee1ca9",
+            "name": "TapInactive",
+            "nameLocation": "1321:11:21",
+            "parameters": {
+              "id": 6506,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1332:2:21"
+            }
+          },
+          {
+            "id": 6509,
+            "nodeType": "ErrorDefinition",
+            "src": "1340:22:21",
+            "nodes": [],
+            "errorSelector": "a17205b5",
+            "name": "NotTapCreator",
+            "nameLocation": "1346:13:21",
+            "parameters": {
+              "id": 6508,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1359:2:21"
+            }
+          },
+          {
+            "id": 6511,
+            "nodeType": "ErrorDefinition",
+            "src": "1367:24:21",
+            "nodes": [],
+            "errorSelector": "f3384040",
+            "name": "IneligibleClaim",
+            "nameLocation": "1373:15:21",
+            "parameters": {
+              "id": 6510,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1388:2:21"
+            }
+          },
+          {
+            "id": 6515,
+            "nodeType": "ErrorDefinition",
+            "src": "1396:34:21",
+            "nodes": [],
+            "errorSelector": "5614fa77",
+            "name": "NotHost",
+            "nameLocation": "1402:7:21",
+            "parameters": {
+              "id": 6514,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6513,
+                  "mutability": "mutable",
+                  "name": "terminator",
+                  "nameLocation": "1418:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6515,
+                  "src": "1410:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6512,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1410:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1409:20:21"
+            }
+          },
+          {
+            "id": 6519,
+            "nodeType": "ErrorDefinition",
+            "src": "1435:36:21",
+            "nodes": [],
+            "errorSelector": "48bbd5d2",
+            "name": "SameTapRate",
+            "nameLocation": "1441:11:21",
+            "parameters": {
+              "id": 6518,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6517,
+                  "mutability": "mutable",
+                  "name": "ratePerNFT",
+                  "nameLocation": "1459:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6519,
+                  "src": "1453:16:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int96",
+                    "typeString": "int96"
+                  },
+                  "typeName": {
+                    "id": 6516,
+                    "name": "int96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1453:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int96",
+                      "typeString": "int96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1452:18:21"
+            }
+          },
+          {
+            "id": 6523,
+            "nodeType": "ErrorDefinition",
+            "src": "1476:37:21",
+            "nodes": [],
+            "errorSelector": "ad886471",
+            "name": "NotOwnerOfNFT",
+            "nameLocation": "1482:13:21",
+            "parameters": {
+              "id": 6522,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6521,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1504:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6523,
+                  "src": "1496:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6520,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1496:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1495:17:21"
+            }
+          },
+          {
+            "id": 6527,
+            "nodeType": "ErrorDefinition",
+            "src": "1518:44:21",
+            "nodes": [],
+            "errorSelector": "8832d5fa",
+            "name": "StreamAlreadyClaimed",
+            "nameLocation": "1524:20:21",
+            "parameters": {
+              "id": 6526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6525,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1553:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6527,
+                  "src": "1545:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6524,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1545:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1544:17:21"
+            }
+          },
+          {
+            "id": 6531,
+            "nodeType": "ErrorDefinition",
+            "src": "1567:38:21",
+            "nodes": [],
+            "errorSelector": "8fcfde42",
+            "name": "StreamNotFound",
+            "nameLocation": "1573:14:21",
+            "parameters": {
+              "id": 6530,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6529,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1596:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6531,
+                  "src": "1588:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6528,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1588:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1587:17:21"
+            }
+          },
+          {
+            "id": 6535,
+            "nodeType": "ErrorDefinition",
+            "src": "1610:44:21",
+            "nodes": [],
+            "errorSelector": "8bb456ea",
+            "name": "HolderStreamsNotFound",
+            "nameLocation": "1616:21:21",
+            "parameters": {
+              "id": 6534,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6533,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1646:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6535,
+                  "src": "1638:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6532,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1638:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1637:16:21"
+            }
+          },
+          {
+            "id": 6541,
+            "nodeType": "ErrorDefinition",
+            "src": "1659:67:21",
+            "nodes": [],
+            "errorSelector": "791c6055",
+            "name": "WrongStreamCloseAttempt",
+            "nameLocation": "1665:23:21",
+            "parameters": {
+              "id": 6540,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6537,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1697:7:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6541,
+                  "src": "1689:15:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6536,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1689:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6539,
+                  "mutability": "mutable",
+                  "name": "terminator",
+                  "nameLocation": "1714:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6541,
+                  "src": "1706:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6538,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1706:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1688:37:21"
+            }
+          },
+          {
+            "id": 6547,
+            "nodeType": "ErrorDefinition",
+            "src": "1731:71:21",
+            "nodes": [],
+            "errorSelector": "33c17a3b",
+            "name": "StreamsAdjustmentsFailed",
+            "nameLocation": "1737:24:21",
+            "parameters": {
+              "id": 6546,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6543,
+                  "mutability": "mutable",
+                  "name": "prevHolder",
+                  "nameLocation": "1770:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6547,
+                  "src": "1762:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6542,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1762:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6545,
+                  "mutability": "mutable",
+                  "name": "currHolder",
+                  "nameLocation": "1790:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6547,
+                  "src": "1782:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6544,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1782:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1761:40:21"
+            }
+          },
+          {
+            "id": 6557,
+            "nodeType": "ErrorDefinition",
+            "src": "1807:142:21",
+            "nodes": [],
+            "errorSelector": "482bfc57",
+            "name": "NoEmergency",
+            "nameLocation": "1813:11:21",
+            "parameters": {
+              "id": 6556,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6549,
+                  "mutability": "mutable",
+                  "name": "terminator",
+                  "nameLocation": "1842:10:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6557,
+                  "src": "1834:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6548,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1834:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6551,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1870:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6557,
+                  "src": "1862:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6550,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1862:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6553,
+                  "mutability": "mutable",
+                  "name": "currTapBalance",
+                  "nameLocation": "1894:14:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6557,
+                  "src": "1886:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6552,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1886:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6555,
+                  "mutability": "mutable",
+                  "name": "minReqTapBalance",
+                  "nameLocation": "1926:16:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6557,
+                  "src": "1918:24:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6554,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1918:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1824:124:21"
+            }
+          },
+          {
+            "id": 6563,
+            "nodeType": "ErrorDefinition",
+            "src": "1954:76:21",
+            "nodes": [],
+            "errorSelector": "003bc4f5",
+            "name": "TapMinAmountLimit",
+            "nameLocation": "1960:17:21",
+            "parameters": {
+              "id": 6562,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6559,
+                  "mutability": "mutable",
+                  "name": "remainingAmount",
+                  "nameLocation": "1986:15:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6563,
+                  "src": "1978:23:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6558,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1978:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6561,
+                  "mutability": "mutable",
+                  "name": "minAmountRequried",
+                  "nameLocation": "2011:17:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6563,
+                  "src": "2003:25:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6560,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2003:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1977:52:21"
+            }
+          },
+          {
+            "id": 6569,
+            "nodeType": "ErrorDefinition",
+            "src": "2035:76:21",
+            "nodes": [],
+            "errorSelector": "46b73ad5",
+            "name": "TapBalanceInsufficient",
+            "nameLocation": "2041:22:21",
+            "parameters": {
+              "id": 6568,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6565,
+                  "mutability": "mutable",
+                  "name": "currTapBalance",
+                  "nameLocation": "2072:14:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6569,
+                  "src": "2064:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6564,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2064:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6567,
+                  "mutability": "mutable",
+                  "name": "reqTapBalance",
+                  "nameLocation": "2096:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6569,
+                  "src": "2088:21:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6566,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2088:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2063:47:21"
+            }
+          },
+          {
+            "id": 6572,
+            "nodeType": "FunctionDefinition",
+            "src": "2117:32:21",
+            "nodes": [],
+            "functionSelector": "8cf79999",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activateTap",
+            "nameLocation": "2126:11:21",
+            "parameters": {
+              "id": 6570,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2137:2:21"
+            },
+            "returnParameters": {
+              "id": 6571,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2148:0:21"
+            },
+            "scope": 6581,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 6575,
+            "nodeType": "FunctionDefinition",
+            "src": "2155:34:21",
+            "nodes": [],
+            "functionSelector": "48addb5c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deactivateTap",
+            "nameLocation": "2164:13:21",
+            "parameters": {
+              "id": 6573,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2177:2:21"
+            },
+            "returnParameters": {
+              "id": 6574,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2188:0:21"
+            },
+            "scope": 6581,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 6580,
+            "nodeType": "FunctionDefinition",
+            "src": "2195:51:21",
+            "nodes": [],
+            "functionSelector": "1c8da209",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "changeRate",
+            "nameLocation": "2204:10:21",
+            "parameters": {
+              "id": 6578,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6577,
+                  "mutability": "mutable",
+                  "name": "newRatePerNFT",
+                  "nameLocation": "2222:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6580,
+                  "src": "2215:20:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 6576,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2215:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2214:22:21"
+            },
+            "returnParameters": {
+              "id": 6579,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2245:0:21"
+            },
+            "scope": 6581,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITap",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          6581
+        ],
+        "name": "ITap",
+        "nameLocation": "224:4:21",
+        "scope": 6582,
+        "usedErrors": [
+          6495,
+          6497,
+          6499,
+          6501,
+          6503,
+          6505,
+          6507,
+          6509,
+          6511,
+          6515,
+          6519,
+          6523,
+          6527,
+          6531,
+          6535,
+          6541,
+          6547,
+          6557,
+          6563,
+          6569
+        ]
+      }
+    ],
+    "license": "SEE LICENSE IN LICENSE"
+  },
+  "id": 21
+}

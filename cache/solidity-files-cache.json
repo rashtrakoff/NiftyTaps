@@ -2087,6 +2087,59 @@
         }
       }
     },
+    "lib/protocol-monorepo/packages/ethereum-contracts/contracts/apps/SuperAppBase.sol": {
+      "lastModificationDate": 1668014721558,
+      "contentHash": "4ad2109d5a8003eca4b9a792c863bc87",
+      "sourceName": "lib/protocol-monorepo/packages/ethereum-contracts/contracts/apps/SuperAppBase.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol"
+      ],
+      "versionRequirement": null,
+      "artifacts": {
+        "SuperAppBase": {
+          "0.8.16+commit.07a7930e.Linux.gcc": "SuperAppBase.sol/SuperAppBase.json"
+        }
+      }
+    },
     "lib/protocol-monorepo/packages/ethereum-contracts/contracts/gov/SuperfluidGovernanceBase.sol": {
       "lastModificationDate": 1668014722751,
       "contentHash": "33a5d643ff23f9556a10d0732eae4000",
@@ -4296,9 +4349,72 @@
         }
       }
     },
+    "src/Tap.sol": {
+      "lastModificationDate": 1669051874687,
+      "contentHash": "8e0373930790a31bdc55ab0c1d2667c5",
+      "sourceName": "src/Tap.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Address.sol",
+        "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/apps/SuperAppBase.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
+        "src/interfaces/ITap.sol",
+        "src/interfaces/IcfaV1Forwarder.sol"
+      ],
+      "versionRequirement": "^0.8.15",
+      "artifacts": {
+        "Tap": {
+          "0.8.16+commit.07a7930e.Linux.gcc": "Tap.sol/Tap.json"
+        }
+      }
+    },
     "src/TapWizard.sol": {
-      "lastModificationDate": 1668754510394,
-      "contentHash": "52f938916e032f7016905f86e47ccb1b",
+      "lastModificationDate": 1668795524550,
+      "contentHash": "16150bd670abfa2143259388d2c950ac",
       "sourceName": "src/TapWizard.sol",
       "solcConfig": {
         "settings": {
@@ -4398,6 +4514,59 @@
       "artifacts": {
         "IERC20Mod": {
           "0.8.16+commit.07a7930e.Linux.gcc": "IERC20Mod.sol/IERC20Mod.json"
+        }
+      }
+    },
+    "src/interfaces/ITap.sol": {
+      "lastModificationDate": 1669051776408,
+      "contentHash": "19f9d135d6665f335dad40b1954fa260",
+      "sourceName": "src/interfaces/ITap.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol"
+      ],
+      "versionRequirement": "^0.8.15",
+      "artifacts": {
+        "ITap": {
+          "0.8.16+commit.07a7930e.Linux.gcc": "ITap.sol/ITap.json"
         }
       }
     },

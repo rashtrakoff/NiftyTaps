@@ -188,7 +188,7 @@ contract TapWizard is ITapWizard {
         // holder of the NFT only takes place if the current stream rate is greater than 0.
         // This check is important in case the tap runs out of balance and all the streams corresponding
         // to this tap were closed and after top-up, someone else or the same user comes and claims
-        // a stream from the tap. We are assuming that the accounting have been done correctly such
+        // a stream from the tap. We are assuming that the accounting has been done correctly such
         // that the `prevHolderStreamRate` is a multiple of `ratePerNFT` and hence an update can always
         // take place if `prevHolderStreamRate` > 0.
         // NOTE: Updating a flow in this manner can create a big issue that in case the tap runs out of
