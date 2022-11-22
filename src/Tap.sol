@@ -10,6 +10,8 @@ import {IERC20} from "openzeppelin-contracts/token/ERC20/IERC20.sol";
 import {Initializable} from "openzeppelin-contracts/proxy/utils/Initializable.sol";
 import {ITap} from "./interfaces/ITap.sol";
 
+// TODO: Change createFlow, updateFlow, and deleteFlow to setStreamRate.
+ 
 contract Tap is Initializable, ITap, SuperAppBase {
     using SafeCast for *;
     using SafeERC20 for IERC20;
@@ -20,9 +22,6 @@ contract Tap is Initializable, ITap, SuperAppBase {
     IERC721 public NFT;
 
     string public name;
-
-    // Status flag to denote if claims without providing `tokenIds` are allowed.
-    bool public pauseBulkClaims;
 
     bool public active;
 
@@ -38,70 +37,30 @@ contract Tap is Initializable, ITap, SuperAppBase {
     mapping(address => ClaimedData) private claimedStreams;
 
     function initialize(
+        string memory _name,
         address _host,
+        address _creator,
+        uint96 _ratePerNFT,
         IcfaV1Forwarder _cfaV1Forwarder,
         IERC721 _nft,
-        ISuperToken _streamToken,
-        string memory _name,
-        bool _pauseBulkClaims
+        ISuperToken _streamToken
     ) external initializer {
-        if (
-            address(_cfaV1Forwarder) == address(0) ||
-            address(_nft) == address(0) ||
-            address(_streamToken) == address(0)
-        ) revert ZeroAddress();
-
         HOST = _host;
         CFA_V1_FORWARDER = _cfaV1Forwarder;
         STREAM_TOKEN = _streamToken;
-        CREATOR = msg.sender;
+        CREATOR = _creator;
         NFT = _nft;
+        ratePerNFT = int96(_ratePerNFT);
         name = _name;
-        pauseBulkClaims = _pauseBulkClaims;
 
         emit TapCreated(
             _name,
-            msg.sender,
+            _creator,
             address(_nft),
-            address(_streamToken)
+            address(_streamToken),
+            _ratePerNFT
         );
     }
-
-    // TODO: Move this function to TapWizard (factory contract)
-    // function createTap(
-    //     string memory _name,
-    //     address _nft,
-    //     uint96 _ratePerNFT,
-    //     uint256 _amount,
-    //     ISuperToken _superToken
-    // ) external returns (bytes32 _id) {
-    //     _id = getTapId(_name, _nft, msg.sender);
-
-    //     // If a tap already exists, don't create a new one.
-    //     if (Taps[_id].creator == msg.sender) revert TapExists(_id);
-
-    //     if (_nft == address(0) || address(_superToken) == address(0))
-    //         revert ZeroAddress();
-
-    //     // Transferring super tokens from the creator to this contract.
-    //     _superToken.transferFrom(msg.sender, address(this), _amount);
-
-    //     // Creating new Tap with the given arguments.
-    //     Tap memory newTap;
-
-    //     newTap.active = true;
-    //     newTap.ratePerNFT = _ratePerNFT;
-    //     newTap.lastUpdateTime = (block.timestamp).toUint64();
-    //     newTap.creator = msg.sender;
-    //     newTap.nft = _nft;
-    //     newTap.name = _name;
-    //     newTap.STREAM_TOKEN = _superToken;
-    //     newTap.balance = _amount;
-
-    //     Taps[_id] = newTap;
-
-    //     emit TapCreated(_name, msg.sender, _nft, address(_superToken), _id);
-    // }
 
     // TODO: Shorten the code by breaking into two or more functions.
     function claimStream(uint256 _tokenId) external {

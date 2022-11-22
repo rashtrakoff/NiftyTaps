@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.15;
 
+import {IERC721} from "openzeppelin-contracts/token/ERC721/IERC721.sol";
 import {ISuperfluid, ISuperToken} from "protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol";
+import {IcfaV1Forwarder} from "./IcfaV1Forwarder.sol";
 
 interface ITap {
     // TODO: Explore bitpacking as a solution using int104 or uint96.
@@ -15,7 +17,8 @@ interface ITap {
         string name,
         address creator,
         address indexed nft,
-        address indexed superToken
+        address indexed superToken,
+        uint96 ratePerNFT
     );
     event TapActivated();
     event TapDeactivated();
@@ -60,9 +63,15 @@ interface ITap {
     error TapMinAmountLimit(uint256 remainingAmount, uint256 minAmountRequried);
     error TapBalanceInsufficient(uint256 currTapBalance, uint256 reqTapBalance);
 
-    function activateTap() external;
+    function initialize(
+        string memory name,
+        address host,
+        address creator,
+        uint96 ratePerNFT,
+        IcfaV1Forwarder cfaV1Forwarder,
+        IERC721 nft,
+        ISuperToken streamToken
+    ) external;
 
-    function deactivateTap() external;
-
-    function changeRate(uint96 newRatePerNFT) external;
+    function topUpTap(uint256 amount) external;
 }

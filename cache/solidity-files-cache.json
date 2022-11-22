@@ -855,6 +855,46 @@
         }
       }
     },
+    "lib/openzeppelin-contracts/contracts/proxy/Clones.sol": {
+      "lastModificationDate": 1668014934063,
+      "contentHash": "3f372a46287d4b1d768283e982dae119",
+      "sourceName": "lib/openzeppelin-contracts/contracts/proxy/Clones.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "Clones": {
+          "0.8.16+commit.07a7930e.Linux.gcc": "Clones.sol/Clones.json"
+        }
+      }
+    },
     "lib/openzeppelin-contracts/contracts/proxy/Proxy.sol": {
       "lastModificationDate": 1668014934065,
       "contentHash": "40b3d81a836d50ff47e03893dcaaf204",
@@ -4350,8 +4390,8 @@
       }
     },
     "src/Tap.sol": {
-      "lastModificationDate": 1669051874687,
-      "contentHash": "8e0373930790a31bdc55ab0c1d2667c5",
+      "lastModificationDate": 1669137464221,
+      "contentHash": "b95cec165dc6f4704c8cc1c1cee33b29",
       "sourceName": "src/Tap.sol",
       "solcConfig": {
         "settings": {
@@ -4382,6 +4422,7 @@
         }
       },
       "imports": [
+        "lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
@@ -4413,8 +4454,8 @@
       }
     },
     "src/TapWizard.sol": {
-      "lastModificationDate": 1668795524550,
-      "contentHash": "16150bd670abfa2143259388d2c950ac",
+      "lastModificationDate": 1669138736142,
+      "contentHash": "46ac9a2548492f188ef4db61d814968f",
       "sourceName": "src/TapWizard.sol",
       "solcConfig": {
         "settings": {
@@ -4445,12 +4486,15 @@
         }
       },
       "imports": [
+        "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        "lib/openzeppelin-contracts/contracts/proxy/Clones.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
         "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
         "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
@@ -4465,6 +4509,7 @@
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
         "src/interfaces/IERC20Mod.sol",
+        "src/interfaces/ITap.sol",
         "src/interfaces/ITapWizard.sol",
         "src/interfaces/IcfaV1Forwarder.sol"
       ],
@@ -4518,8 +4563,8 @@
       }
     },
     "src/interfaces/ITap.sol": {
-      "lastModificationDate": 1669051776408,
-      "contentHash": "19f9d135d6665f335dad40b1954fa260",
+      "lastModificationDate": 1669137706543,
+      "contentHash": "767c353bbbbd5617083898b55f207609",
       "sourceName": "src/interfaces/ITap.sol",
       "solcConfig": {
         "settings": {
@@ -4551,7 +4596,10 @@
       },
       "imports": [
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
+        "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
@@ -4561,7 +4609,8 @@
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
-        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol"
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
+        "src/interfaces/IcfaV1Forwarder.sol"
       ],
       "versionRequirement": "^0.8.15",
       "artifacts": {
@@ -4571,8 +4620,8 @@
       }
     },
     "src/interfaces/ITapWizard.sol": {
-      "lastModificationDate": 1668754113970,
-      "contentHash": "57f5c0513233e5be49e58e91cc3fb7a5",
+      "lastModificationDate": 1669137633417,
+      "contentHash": "9fbf7de7c09fbc2d8a0d7b19cc1a8011",
       "sourceName": "src/interfaces/ITapWizard.sol",
       "solcConfig": {
         "settings": {
@@ -4604,7 +4653,9 @@
       },
       "imports": [
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
+        "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
