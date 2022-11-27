@@ -30,6 +30,7 @@ interface ITap {
         int96 newStreamRate
     );
     event StreamClaimedById(address indexed claimant, uint256 tokenId);
+    event StreamsAdjusted(address indexed holder, int96 oldRatePerNFT, int96 newRatePerNFT);
     event EmergencyCloseInitiated(address indexed holder);
     event TapDrained(
         address indexed streamToken,
@@ -48,6 +49,7 @@ interface ITap {
     error IneligibleClaim();
     error NotHost(address terminator);
     error SameTapRate(int96 ratePerNFT);
+    error SameClaimRate(int96 ratePerNFT);
     error NotOwnerOfNFT(uint256 tokenId);
     error StreamAlreadyClaimed(uint256 tokenId);
     error StreamNotFound(uint256 tokenId);
@@ -74,4 +76,9 @@ interface ITap {
     ) external;
 
     function topUpTap(uint256 amount) external;
+
+    function getClaimedData(address user, uint256 tokenId)
+        external
+        view
+        returns (bool status, int96 claimedRate);
 }

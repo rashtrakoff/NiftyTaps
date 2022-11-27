@@ -74,6 +74,12 @@
         {
           "indexed": true,
           "internalType": "address",
+          "name": "tap",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
           "name": "nft",
           "type": "address"
         },
@@ -86,6 +92,25 @@
       ],
       "name": "TapCreated",
       "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "Taps",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "tap",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [
@@ -111,7 +136,13 @@
         }
       ],
       "name": "createTap",
-      "outputs": [],
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "newTap",
+          "type": "address"
+        }
+      ],
       "stateMutability": "nonpayable",
       "type": "function"
     }
@@ -127,9 +158,10 @@
     "linkReferences": {}
   },
   "methodIdentifiers": {
+    "Taps(string)": "fc2d0f4c",
     "createTap(string,uint96,address,address)": "b99fbe2b"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"SameImplementationAddress\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"TapExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TransferFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"ImplementationChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"}],\"name\":\"TapCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint96\",\"name\":\"ratePerNFT\",\"type\":\"uint96\"},{\"internalType\":\"contract IERC721\",\"name\":\"nft\",\"type\":\"address\"},{\"internalType\":\"contract ISuperToken\",\"name\":\"superToken\",\"type\":\"address\"}],\"name\":\"createTap\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"createTap(string,uint96,address,address)\":{\"params\":{\"name\":\"Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.\",\"nft\":\"The NFT address for which a tap is being created.\",\"ratePerNFT\":\"Stream rate for the super token distribution.\",\"superToken\":\"The super token to be distributed by the tap.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"createTap(string,uint96,address,address)\":{\"notice\":\"This function creates a tap for a creator to distribute a particular supertoken.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/ITapWizard.sol\":\"ITapWizard\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":protocol-monorepo/=lib/protocol-monorepo/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x086fbe904291497e1532ef340f1bd589078f49e3d4d0bbfd88f5e02fb89261eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0df1e3e965b78a0d98dda2d1d6a6acde88f515b1d3a9ad02f505e93fa7babeda\",\"dweb:/ipfs/QmW4cSbGriRAj7XRZu6zSaqspe4eyYWkF7WfJbj3rmmLbk\"]},\"lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol\":{\"keccak256\":\"0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1\",\"dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol\":{\"keccak256\":\"0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8\",\"dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol\":{\"keccak256\":\"0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820\",\"dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol\":{\"keccak256\":\"0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e\",\"dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol\":{\"keccak256\":\"0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0\",\"dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol\":{\"keccak256\":\"0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c\",\"dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol\":{\"keccak256\":\"0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885\",\"dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol\":{\"keccak256\":\"0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a\",\"dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol\":{\"keccak256\":\"0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80\",\"dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol\":{\"keccak256\":\"0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae\",\"dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol\":{\"keccak256\":\"0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042\",\"dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg\"]},\"src/interfaces/ITapWizard.sol\":{\"keccak256\":\"0x178ca56424932c18e0d950761bdded08a2afa244c56c54bf16c4689a5f666031\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://389a8b80a72cecbc05a09968f9135d3c3ddf9a13234a7133ffe8bf6c93dbb517\",\"dweb:/ipfs/QmdCcy8ziDqb9LibAujQyZAqrURiayKhPTemRFpirxVnEc\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"SameImplementationAddress\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"TapExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TransferFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"ImplementationChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"tap\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"superToken\",\"type\":\"address\"}],\"name\":\"TapCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"Taps\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"tap\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint96\",\"name\":\"ratePerNFT\",\"type\":\"uint96\"},{\"internalType\":\"contract IERC721\",\"name\":\"nft\",\"type\":\"address\"},{\"internalType\":\"contract ISuperToken\",\"name\":\"superToken\",\"type\":\"address\"}],\"name\":\"createTap\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"newTap\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"createTap(string,uint96,address,address)\":{\"params\":{\"name\":\"Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.\",\"nft\":\"The NFT address for which a tap is being created.\",\"ratePerNFT\":\"Stream rate for the super token distribution.\",\"superToken\":\"The super token to be distributed by the tap.\"},\"returns\":{\"newTap\":\"Address of the newly created tap contract.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"createTap(string,uint96,address,address)\":{\"notice\":\"This function creates a tap for a creator to distribute a particular supertoken.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/ITapWizard.sol\":\"ITapWizard\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/\",\":protocol-monorepo/=lib/protocol-monorepo/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x086fbe904291497e1532ef340f1bd589078f49e3d4d0bbfd88f5e02fb89261eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0df1e3e965b78a0d98dda2d1d6a6acde88f515b1d3a9ad02f505e93fa7babeda\",\"dweb:/ipfs/QmW4cSbGriRAj7XRZu6zSaqspe4eyYWkF7WfJbj3rmmLbk\"]},\"lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol\":{\"keccak256\":\"0x6e17345a3755b791d0fce8ee08cc16ad340859d21617c225fd9e4ca8b2282553\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e6109b1f30eb35aff8dfa06cc87319b8b4cb568bb6797e427baf215dfd6de3a1\",\"dweb:/ipfs/QmYQW3GK6X7EJwhtw7zhaufnqufF5hBqm8GhoKt9wCr2im\"]},\"lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol\":{\"keccak256\":\"0x78f553c8b63ca0b8ca892e3461aeb2d176f0b5e574ae0ea616bbb70d33d5e5f2\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://f2e9a8f5df9cf5b8326cefa666abc21c41fd09fd4ea3fd73a55b1346fa1693e8\",\"dweb:/ipfs/QmPNrMzHNpE97SwHwjXhHCttKQQSt2oYUforvPenVuemRJ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol\":{\"keccak256\":\"0x9b4fab6dcac1337f78e04d67d8c2b48b1de8bd4bbf14b475840f9dbda7b8f21e\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://cc2f3629ad0cb46bd4f595880591ad6c9d75a82d920cb9355e462fbf8022c820\",\"dweb:/ipfs/QmXMovxK4qpWT4yffXxUVjkMNwxEfS6mtn39mLSmjaxEdW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol\":{\"keccak256\":\"0x6cc4b0724d977190c7441dfc3be6c6e48b43b555c3370af32ef5b6600f15f53f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3e89c944642772a42429f21a11017b57deb98a9198f8e4f8749f00aaee71299e\",\"dweb:/ipfs/QmaSv9GvqikcGHJ3tcwATDHSpQw6mfnHPDtcfqcZSS7LF6\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol\":{\"keccak256\":\"0x84bb6579908dcb80621e089da34eac2a06856a90bc384710a7c8df07a70d0995\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3809d93a1cfacdec425c277c519db137b86691459533956ecd18120bfb801ed0\",\"dweb:/ipfs/Qmc66ovCtVYANKH76iv8a58u1FQ3yKVKBVbK1aVk2RZzRT\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol\":{\"keccak256\":\"0xb50180797117711b1ecf7adf628892016ad864d2321bfaf7eaf43901b5394946\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://4121ed7bf52de22702cc42972fecb37c7d0461834ab3c601b32dc737789fde4c\",\"dweb:/ipfs/QmaU1EWAzfzmiazMfuSJMybKMVpyoc6DyUPJpxQCc8UCxb\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol\":{\"keccak256\":\"0x41464648136cbcd34b7df28471eca470f67c80409b2ac01b202ac7092ead4890\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://3dc4cf90b882903e91a0086268a09b541ac0255d6a872a97de3cd81b1ee14885\",\"dweb:/ipfs/QmbF1HfpQ854hhmjc5xqiauevFEZhKWMFHUgDTH1VZXrkQ\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol\":{\"keccak256\":\"0x647f623df16dfb57d0d380bf6aada5f1d9bcca88ac0ea4f998d7159ba8da95e1\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://95d49cf7a3b14214ad231746171d02c0019bc0ef291250f2d68998c7de82069a\",\"dweb:/ipfs/QmbSUAHoEA8iMres2heL2wCnKSRruD92Qd3eMNzr4w8kMW\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol\":{\"keccak256\":\"0xa94f5ad95da2716a21cf6a0c7861ce03ba70c6931cfc8a9bcae741881e489a99\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://2eee2bae93ce8aae1e75aed6153e3d46f2d0c3462f47d9a99713054fff71bc80\",\"dweb:/ipfs/QmVh5HDeJo3p4rUV45RVCBGFpEN2G3gwL7ADT73csPnj5Q\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol\":{\"keccak256\":\"0x55be78ffb441c782f612b153d7d9049e3f0dbfd412c1f7df29c896b972b2985f\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://a223c68e38a6c9b1e363e525911bc7eda44ea517865ae53bd0d34ff858cc02ae\",\"dweb:/ipfs/QmVruGehibG6Emr2A6JHwUnhd4NzsGkE24cbGqnDpEvrKh\"]},\"lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol\":{\"keccak256\":\"0x7456cd394cc905aae7cdbd4601ce1c296c768c13c28e66efbb913cc070bad3e4\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://5a6589b428b724721ba5b4dd196c8f366a6e694ef313add093f29af64496c042\",\"dweb:/ipfs/QmSMgV6y8L6pyyzDz6kKmafVwujNWcjTqutpCBxe4uNRqg\"]},\"src/interfaces/ITapWizard.sol\":{\"keccak256\":\"0x5942619fe9898cb690895e12db0ab873ae18f1464307ec33b0c554870b6281a0\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://7336c9f3579d18d02946d473108ad1b456c91028ee7e9aef357edbcd44507b7a\",\"dweb:/ipfs/QmPSxRaNFZ2ydPbthj4Q6tYUhfb4dTKY1QUKM2psQxLpgo\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.16+commit.07a7930e"
@@ -209,6 +241,12 @@
             },
             {
               "internalType": "address",
+              "name": "tap",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
               "name": "nft",
               "type": "address",
               "indexed": true
@@ -223,6 +261,25 @@
           "type": "event",
           "name": "TapCreated",
           "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "Taps",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "tap",
+              "type": "address"
+            }
+          ]
         },
         {
           "inputs": [
@@ -249,7 +306,14 @@
           ],
           "stateMutability": "nonpayable",
           "type": "function",
-          "name": "createTap"
+          "name": "createTap",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "newTap",
+              "type": "address"
+            }
+          ]
         }
       ],
       "devdoc": {
@@ -261,6 +325,9 @@
               "nft": "The NFT address for which a tap is being created.",
               "ratePerNFT": "Stream rate for the super token distribution.",
               "superToken": "The super token to be distributed by the tap."
+            },
+            "returns": {
+              "newTap": "Address of the newly created tap contract."
             }
           }
         },
@@ -283,7 +350,8 @@
         ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
         ":forge-std/=lib/forge-std/src/",
         ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
-        ":protocol-monorepo/=lib/protocol-monorepo/"
+        ":protocol-monorepo/=lib/protocol-monorepo/",
+        ":solmate/=lib/solmate/src/"
       ],
       "optimizer": {
         "enabled": true,
@@ -411,10 +479,10 @@
         "license": "AGPLv3"
       },
       "src/interfaces/ITapWizard.sol": {
-        "keccak256": "0x178ca56424932c18e0d950761bdded08a2afa244c56c54bf16c4689a5f666031",
+        "keccak256": "0x5942619fe9898cb690895e12db0ab873ae18f1464307ec33b0c554870b6281a0",
         "urls": [
-          "bzz-raw://389a8b80a72cecbc05a09968f9135d3c3ddf9a13234a7133ffe8bf6c93dbb517",
-          "dweb:/ipfs/QmdCcy8ziDqb9LibAujQyZAqrURiayKhPTemRFpirxVnEc"
+          "bzz-raw://7336c9f3579d18d02946d473108ad1b456c91028ee7e9aef357edbcd44507b7a",
+          "dweb:/ipfs/QmPSxRaNFZ2ydPbthj4Q6tYUhfb4dTKY1QUKM2psQxLpgo"
         ],
         "license": "SEE LICENSE IN LICENSE"
       }
@@ -423,28 +491,28 @@
   },
   "ast": {
     "absolutePath": "src/interfaces/ITapWizard.sol",
-    "id": 7275,
+    "id": 57597,
     "exportedSymbols": {
       "IERC721": [
-        872
+        26489
       ],
       "ISuperToken": [
-        4586
+        44781
       ],
       "ISuperfluid": [
-        5188
+        45383
       ],
       "ITapWizard": [
-        7274
+        57596
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "51:1260:28",
+    "src": "51:1449:98",
     "nodes": [
       {
-        "id": 7224,
+        "id": 57535,
         "nodeType": "PragmaDirective",
-        "src": "51:24:28",
+        "src": "51:24:98",
         "nodes": [],
         "literals": [
           "solidity",
@@ -454,24 +522,24 @@
         ]
       },
       {
-        "id": 7226,
+        "id": 57537,
         "nodeType": "ImportDirective",
-        "src": "77:72:28",
+        "src": "77:72:98",
         "nodes": [],
         "absolutePath": "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
         "file": "openzeppelin-contracts/token/ERC721/IERC721.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 7275,
-        "sourceUnit": 873,
+        "scope": 57597,
+        "sourceUnit": 26490,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 7225,
+              "id": 57536,
               "name": "IERC721",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 872,
-              "src": "85:7:28",
+              "referencedDeclaration": 26489,
+              "src": "85:7:98",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
@@ -480,36 +548,36 @@
         "unitAlias": ""
       },
       {
-        "id": 7229,
+        "id": 57540,
         "nodeType": "ImportDirective",
-        "src": "150:135:28",
+        "src": "150:135:98",
         "nodes": [],
         "absolutePath": "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
         "file": "protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 7275,
-        "sourceUnit": 5189,
+        "scope": 57597,
+        "sourceUnit": 45384,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 7227,
+              "id": 57538,
               "name": "ISuperfluid",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 5188,
-              "src": "158:11:28",
+              "referencedDeclaration": 45383,
+              "src": "158:11:98",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
           },
           {
             "foreign": {
-              "id": 7228,
+              "id": 57539,
               "name": "ISuperToken",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 4586,
-              "src": "171:11:28",
+              "referencedDeclaration": 44781,
+              "src": "171:11:98",
               "typeDescriptions": {}
             },
             "nameLocation": "-1:-1:-1"
@@ -518,33 +586,33 @@
         "unitAlias": ""
       },
       {
-        "id": 7274,
+        "id": 57596,
         "nodeType": "ContractDefinition",
-        "src": "287:1023:28",
+        "src": "287:1212:98",
         "nodes": [
           {
-            "id": 7235,
+            "id": 57546,
             "nodeType": "EventDefinition",
-            "src": "314:104:28",
+            "src": "314:104:98",
             "nodes": [],
             "anonymous": false,
             "eventSelector": "cfbf4028add9318bbf716f08c348595afb063b0e9feed1f86d33681a4b3ed4d3",
             "name": "ImplementationChanged",
-            "nameLocation": "320:21:28",
+            "nameLocation": "320:21:98",
             "parameters": {
-              "id": 7234,
+              "id": 57545,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7231,
+                  "id": 57542,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "oldImplementation",
-                  "nameLocation": "359:17:28",
+                  "nameLocation": "359:17:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7235,
-                  "src": "351:25:28",
+                  "scope": 57546,
+                  "src": "351:25:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -552,10 +620,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7230,
+                    "id": 57541,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "351:7:28",
+                    "src": "351:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -566,14 +634,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 7233,
+                  "id": 57544,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newImplementation",
-                  "nameLocation": "394:17:28",
+                  "nameLocation": "394:17:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7235,
-                  "src": "386:25:28",
+                  "scope": 57546,
+                  "src": "386:25:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -581,10 +649,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7232,
+                    "id": 57543,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "386:7:28",
+                    "src": "386:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -594,32 +662,32 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "341:76:28"
+              "src": "341:76:98"
             }
           },
           {
-            "id": 7245,
+            "id": 57558,
             "nodeType": "EventDefinition",
-            "src": "423:134:28",
+            "src": "423:163:98",
             "nodes": [],
             "anonymous": false,
-            "eventSelector": "45c022b6e7b90463614d292a3811fdbd813aa602a88ba62513f0998f2c86bf07",
+            "eventSelector": "23c83c253cc492eb3c8c7195f38adcc093e4e9cc14d6c521f2c83377e50cba01",
             "name": "TapCreated",
-            "nameLocation": "429:10:28",
+            "nameLocation": "429:10:98",
             "parameters": {
-              "id": 7244,
+              "id": 57557,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7237,
+                  "id": 57548,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "456:4:28",
+                  "nameLocation": "456:4:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7245,
-                  "src": "449:11:28",
+                  "scope": 57558,
+                  "src": "449:11:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -627,10 +695,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7236,
+                    "id": 57547,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "449:6:28",
+                    "src": "449:6:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -640,14 +708,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 7239,
+                  "id": 57550,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "creator",
-                  "nameLocation": "478:7:28",
+                  "nameLocation": "478:7:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7245,
-                  "src": "470:15:28",
+                  "scope": 57558,
+                  "src": "470:15:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -655,10 +723,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7238,
+                    "id": 57549,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "470:7:28",
+                    "src": "470:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -669,14 +737,43 @@
                 },
                 {
                   "constant": false,
-                  "id": 7241,
+                  "id": 57552,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "tap",
+                  "nameLocation": "511:3:98",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 57558,
+                  "src": "495:19:98",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 57551,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "495:7:98",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 57554,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "nft",
-                  "nameLocation": "511:3:28",
+                  "nameLocation": "540:3:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7245,
-                  "src": "495:19:28",
+                  "scope": 57558,
+                  "src": "524:19:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -684,10 +781,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7240,
+                    "id": 57553,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "495:7:28",
+                    "src": "524:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -698,14 +795,14 @@
                 },
                 {
                   "constant": false,
-                  "id": 7243,
+                  "id": 57556,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "superToken",
-                  "nameLocation": "540:10:28",
+                  "nameLocation": "569:10:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7245,
-                  "src": "524:26:28",
+                  "scope": 57558,
+                  "src": "553:26:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -713,10 +810,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7242,
+                    "id": 57555,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "524:7:28",
+                    "src": "553:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -726,60 +823,60 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "439:117:28"
+              "src": "439:146:98"
             }
           },
           {
-            "id": 7247,
+            "id": 57560,
             "nodeType": "ErrorDefinition",
-            "src": "563:20:28",
+            "src": "592:20:98",
             "nodes": [],
             "errorSelector": "d92e233d",
             "name": "ZeroAddress",
-            "nameLocation": "569:11:28",
+            "nameLocation": "598:11:98",
             "parameters": {
-              "id": 7246,
+              "id": 57559,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "580:2:28"
+              "src": "609:2:98"
             }
           },
           {
-            "id": 7249,
+            "id": 57562,
             "nodeType": "ErrorDefinition",
-            "src": "588:34:28",
+            "src": "617:34:98",
             "nodes": [],
             "errorSelector": "779a1749",
             "name": "SameImplementationAddress",
-            "nameLocation": "594:25:28",
+            "nameLocation": "623:25:98",
             "parameters": {
-              "id": 7248,
+              "id": 57561,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "619:2:28"
+              "src": "648:2:98"
             }
           },
           {
-            "id": 7253,
+            "id": 57566,
             "nodeType": "ErrorDefinition",
-            "src": "627:29:28",
+            "src": "656:29:98",
             "nodes": [],
             "errorSelector": "ab28e2ea",
             "name": "TapExists",
-            "nameLocation": "633:9:28",
+            "nameLocation": "662:9:98",
             "parameters": {
-              "id": 7252,
+              "id": 57565,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7251,
+                  "id": 57564,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "650:4:28",
+                  "nameLocation": "679:4:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7253,
-                  "src": "643:11:28",
+                  "scope": 57566,
+                  "src": "672:11:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -787,10 +884,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7250,
+                    "id": 57563,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "643:6:28",
+                    "src": "672:6:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -799,30 +896,30 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "642:13:28"
+              "src": "671:13:98"
             }
           },
           {
-            "id": 7259,
+            "id": 57572,
             "nodeType": "ErrorDefinition",
-            "src": "661:57:28",
+            "src": "690:57:98",
             "nodes": [],
             "errorSelector": "1c43b976",
             "name": "TransferFailed",
-            "nameLocation": "667:14:28",
+            "nameLocation": "696:14:98",
             "parameters": {
-              "id": 7258,
+              "id": 57571,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7255,
+                  "id": 57568,
                   "mutability": "mutable",
                   "name": "superToken",
-                  "nameLocation": "690:10:28",
+                  "nameLocation": "719:10:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7259,
-                  "src": "682:18:28",
+                  "scope": 57572,
+                  "src": "711:18:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -830,10 +927,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7254,
+                    "id": 57567,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "682:7:28",
+                    "src": "711:7:98",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -844,13 +941,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7257,
+                  "id": 57570,
                   "mutability": "mutable",
                   "name": "amount",
-                  "nameLocation": "710:6:28",
+                  "nameLocation": "739:6:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7259,
-                  "src": "702:14:28",
+                  "scope": 57572,
+                  "src": "731:14:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -858,10 +955,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7256,
+                    "id": 57569,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "702:7:28",
+                    "src": "731:7:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -870,39 +967,39 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "681:36:28"
+              "src": "710:36:98"
             }
           },
           {
-            "id": 7273,
+            "id": 57588,
             "nodeType": "FunctionDefinition",
-            "src": "1166:142:28",
+            "src": "1260:167:98",
             "nodes": [],
             "documentation": {
-              "id": 7260,
+              "id": 57573,
               "nodeType": "StructuredDocumentation",
-              "src": "724:437:28",
-              "text": " @notice This function creates a tap for a creator to distribute a particular supertoken.\n @param name Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.\n @param nft The NFT address for which a tap is being created.\n @param ratePerNFT Stream rate for the super token distribution.\n @param superToken The super token to be distributed by the tap."
+              "src": "753:502:98",
+              "text": " @notice This function creates a tap for a creator to distribute a particular supertoken.\n @param name Name of the tap. Useful if creating multiple taps with the same supertoken, creator and NFT address.\n @param nft The NFT address for which a tap is being created.\n @param ratePerNFT Stream rate for the super token distribution.\n @param superToken The super token to be distributed by the tap.\n @return newTap Address of the newly created tap contract."
             },
             "functionSelector": "b99fbe2b",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createTap",
-            "nameLocation": "1175:9:28",
+            "nameLocation": "1269:9:98",
             "parameters": {
-              "id": 7271,
+              "id": 57584,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7262,
+                  "id": 57575,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "1208:4:28",
+                  "nameLocation": "1302:4:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7273,
-                  "src": "1194:18:28",
+                  "scope": 57588,
+                  "src": "1288:18:98",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -910,10 +1007,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7261,
+                    "id": 57574,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1194:6:28",
+                    "src": "1288:6:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -923,13 +1020,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7264,
+                  "id": 57577,
                   "mutability": "mutable",
                   "name": "ratePerNFT",
-                  "nameLocation": "1229:10:28",
+                  "nameLocation": "1323:10:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7273,
-                  "src": "1222:17:28",
+                  "scope": 57588,
+                  "src": "1316:17:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -937,10 +1034,10 @@
                     "typeString": "uint96"
                   },
                   "typeName": {
-                    "id": 7263,
+                    "id": 57576,
                     "name": "uint96",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1222:6:28",
+                    "src": "1316:6:98",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint96",
                       "typeString": "uint96"
@@ -950,36 +1047,36 @@
                 },
                 {
                   "constant": false,
-                  "id": 7267,
+                  "id": 57580,
                   "mutability": "mutable",
                   "name": "nft",
-                  "nameLocation": "1257:3:28",
+                  "nameLocation": "1351:3:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7273,
-                  "src": "1249:11:28",
+                  "scope": 57588,
+                  "src": "1343:11:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IERC721_$872",
+                    "typeIdentifier": "t_contract$_IERC721_$26489",
                     "typeString": "contract IERC721"
                   },
                   "typeName": {
-                    "id": 7266,
+                    "id": 57579,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 7265,
+                      "id": 57578,
                       "name": "IERC721",
                       "nameLocations": [
-                        "1249:7:28"
+                        "1343:7:98"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 872,
-                      "src": "1249:7:28"
+                      "referencedDeclaration": 26489,
+                      "src": "1343:7:98"
                     },
-                    "referencedDeclaration": 872,
-                    "src": "1249:7:28",
+                    "referencedDeclaration": 26489,
+                    "src": "1343:7:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC721_$872",
+                      "typeIdentifier": "t_contract$_IERC721_$26489",
                       "typeString": "contract IERC721"
                     }
                   },
@@ -987,51 +1084,165 @@
                 },
                 {
                   "constant": false,
-                  "id": 7270,
+                  "id": 57583,
                   "mutability": "mutable",
                   "name": "superToken",
-                  "nameLocation": "1282:10:28",
+                  "nameLocation": "1376:10:98",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7273,
-                  "src": "1270:22:28",
+                  "scope": 57588,
+                  "src": "1364:22:98",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperToken_$4586",
+                    "typeIdentifier": "t_contract$_ISuperToken_$44781",
                     "typeString": "contract ISuperToken"
                   },
                   "typeName": {
-                    "id": 7269,
+                    "id": 57582,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 7268,
+                      "id": 57581,
                       "name": "ISuperToken",
                       "nameLocations": [
-                        "1270:11:28"
+                        "1364:11:98"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 4586,
-                      "src": "1270:11:28"
+                      "referencedDeclaration": 44781,
+                      "src": "1364:11:98"
                     },
-                    "referencedDeclaration": 4586,
-                    "src": "1270:11:28",
+                    "referencedDeclaration": 44781,
+                    "src": "1364:11:98",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperToken_$4586",
+                      "typeIdentifier": "t_contract$_ISuperToken_$44781",
                       "typeString": "contract ISuperToken"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1184:114:28"
+              "src": "1278:114:98"
             },
             "returnParameters": {
-              "id": 7272,
+              "id": 57587,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1307:0:28"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57586,
+                  "mutability": "mutable",
+                  "name": "newTap",
+                  "nameLocation": "1419:6:98",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 57588,
+                  "src": "1411:14:98",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 57585,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1411:7:98",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1410:16:98"
             },
-            "scope": 7274,
+            "scope": 57596,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 57595,
+            "nodeType": "FunctionDefinition",
+            "src": "1433:64:98",
+            "nodes": [],
+            "functionSelector": "fc2d0f4c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "Taps",
+            "nameLocation": "1442:4:98",
+            "parameters": {
+              "id": 57591,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57590,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "1461:4:98",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 57595,
+                  "src": "1447:18:98",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 57589,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1447:6:98",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1446:20:98"
+            },
+            "returnParameters": {
+              "id": 57594,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57593,
+                  "mutability": "mutable",
+                  "name": "tap",
+                  "nameLocation": "1492:3:98",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 57595,
+                  "src": "1484:11:98",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 57592,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1484:7:98",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1483:13:98"
+            },
+            "scope": 57596,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1044,20 +1255,20 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          7274
+          57596
         ],
         "name": "ITapWizard",
-        "nameLocation": "297:10:28",
-        "scope": 7275,
+        "nameLocation": "297:10:98",
+        "scope": 57597,
         "usedErrors": [
-          7247,
-          7249,
-          7253,
-          7259
+          57560,
+          57562,
+          57566,
+          57572
         ]
       }
     ],
     "license": "SEE LICENSE IN LICENSE"
   },
-  "id": 28
+  "id": 98
 }

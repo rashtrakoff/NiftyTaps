@@ -12,6 +12,7 @@ interface ITapWizard {
     event TapCreated(
         string name,
         address creator,
+        address indexed tap,
         address indexed nft,
         address indexed superToken
     );
@@ -27,11 +28,14 @@ interface ITapWizard {
      * @param nft The NFT address for which a tap is being created.
      * @param ratePerNFT Stream rate for the super token distribution.
      * @param superToken The super token to be distributed by the tap.
+     * @return newTap Address of the newly created tap contract.
      */
     function createTap(
         string memory name,
         uint96 ratePerNFT,
         IERC721 nft,
         ISuperToken superToken
-    ) external;
+    ) external returns (address newTap);
+
+    function Taps(string memory name) external returns(address tap);
 }

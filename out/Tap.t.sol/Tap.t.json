@@ -1,0 +1,21 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "test/Tap.t.sol",
+    "id": 24415,
+    "exportedSymbols": {},
+    "nodeType": "SourceUnit",
+    "src": "874:0:14",
+    "nodes": [],
+    "license": "SEE LICENSE IN LICENSE"
+  },
+  "id": 14
+}

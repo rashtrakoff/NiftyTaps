@@ -25,7 +25,7 @@ contract TapWizard is Ownable, ITapWizard {
             SuperAppDefinitions.BEFORE_AGREEMENT_TERMINATED_NOOP |
             SuperAppDefinitions.APP_LEVEL_FINAL;
 
-    mapping(string => address) private Taps;
+    mapping(string => address) public Taps;
 
     constructor(
         IcfaV1Forwarder _cfaV1Forwarder,
@@ -60,16 +60,16 @@ contract TapWizard is Ownable, ITapWizard {
         uint96 _ratePerNFT,
         IERC721 _nft,
         ISuperToken _streamToken
-    ) external {
+    ) external returns (address _newTap) {
         if (address(_nft) == address(0) || address(_streamToken) == address(0))
             revert ZeroAddress();
 
         if (Taps[_name] != address(0)) revert TapExists(_name);
 
-        address newTap = Clones.clone(implementation);
-        Taps[_name] = newTap;
+        _newTap = Clones.clone(implementation);
+        Taps[_name] = _newTap;
 
-        ITap(newTap).initialize(
+        ITap(_newTap).initialize(
             _name,
             address(HOST),
             msg.sender,
@@ -79,11 +79,12 @@ contract TapWizard is Ownable, ITapWizard {
             _streamToken
         );
 
-        HOST.registerAppByFactory(ISuperApp(newTap), CONFIG_WORD);
+        HOST.registerAppByFactory(ISuperApp(_newTap), CONFIG_WORD);
 
         emit TapCreated(
             _name,
             msg.sender,
+            _newTap,
             address(_nft),
             address(_streamToken)
         );
