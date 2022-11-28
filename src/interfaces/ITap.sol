@@ -57,10 +57,7 @@ interface ITap {
     error WrongStreamCloseAttempt(uint256 tokenId, address terminator);
     error StreamsAdjustmentsFailed(address prevHolder, address currHolder);
     error NoEmergency(
-        address terminator,
-        address holder,
-        uint256 currTapBalance,
-        uint256 minReqTapBalance
+        address terminator
     );
     error TapMinAmountLimit(uint256 remainingAmount, uint256 minAmountRequried);
     error TapBalanceInsufficient(uint256 currTapBalance, uint256 reqTapBalance);

@@ -4473,8 +4473,8 @@
       }
     },
     "src/Tap.sol": {
-      "lastModificationDate": 1669544911449,
-      "contentHash": "0afb2c9988c5c5dd119dd676a452d03b",
+      "lastModificationDate": 1669659828780,
+      "contentHash": "ea30bf1886bf381352d2f459d3f025ab",
       "sourceName": "src/Tap.sol",
       "solcConfig": {
         "settings": {
@@ -4508,8 +4508,6 @@
         "lib/forge-std/src/console.sol",
         "lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
-        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
-        "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
@@ -4647,8 +4645,8 @@
       }
     },
     "src/interfaces/ITap.sol": {
-      "lastModificationDate": 1669544927898,
-      "contentHash": "25bb2a2e5c91a5e39f9d0e9cc94f4d4b",
+      "lastModificationDate": 1669659537859,
+      "contentHash": "68425f49d96f90536cfb4846c2a0c835",
       "sourceName": "src/interfaces/ITap.sol",
       "solcConfig": {
         "settings": {
@@ -4956,8 +4954,8 @@
       }
     },
     "test/Tap.adjustCurrentStreams.t.sol": {
-      "lastModificationDate": 1669545190545,
-      "contentHash": "1d66feeeab6361479af4b2cc5886520a",
+      "lastModificationDate": 1669545218922,
+      "contentHash": "80f4213da437d859183c670ad7ee963b",
       "sourceName": "test/Tap.adjustCurrentStreams.t.sol",
       "solcConfig": {
         "settings": {
@@ -5244,8 +5242,8 @@
       }
     },
     "test/Tap.closeStream.t.sol": {
-      "lastModificationDate": 1669529666050,
-      "contentHash": "a9c29156d4b4d4a09b788f8437420e3b",
+      "lastModificationDate": 1669660133408,
+      "contentHash": "171d27c06f0fc17e25c10537e36083e8",
       "sourceName": "test/Tap.closeStream.t.sol",
       "solcConfig": {
         "settings": {

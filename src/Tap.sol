@@ -2,20 +2,15 @@
 pragma solidity ^0.8.15;
 
 import {IERC721} from "openzeppelin-contracts/token/ERC721/IERC721.sol";
-import {SafeERC20} from "openzeppelin-contracts/token/ERC20/utils/SafeERC20.sol";
 import {SafeCast} from "openzeppelin-contracts/utils/math/SafeCast.sol";
 import {IcfaV1Forwarder, ISuperToken, ISuperfluid} from "./interfaces/IcfaV1Forwarder.sol";
 import {SuperAppBase} from "protocol-monorepo/packages/ethereum-contracts/contracts/apps/SuperAppBase.sol";
-import {IERC20} from "openzeppelin-contracts/token/ERC20/IERC20.sol";
 import {Initializable} from "openzeppelin-contracts/proxy/utils/Initializable.sol";
 import {ITap} from "./interfaces/ITap.sol";
 import "forge-std/console.sol";
 
-// TODO: Change createFlow, updateFlow, and deleteFlow to setStreamRate.
-
 contract Tap is Initializable, ITap, SuperAppBase {
     using SafeCast for *;
-    using SafeERC20 for IERC20;
 
     address public HOST;
     address public CREATOR;
@@ -315,29 +310,18 @@ contract Tap is Initializable, ITap, SuperAppBase {
     function emergencyCloseStreams(address _holder) external {
         // Anyone can trigger this method if tap balance is insufficient.
         // Creator can trigger this any time.
-        IcfaV1Forwarder forwarder = CFA_V1_FORWARDER;
-        ISuperToken streamToken = STREAM_TOKEN;
 
         // Check if the caller is the creator, if not check if tap balance is insufficient.
-        if (msg.sender != CREATOR) {
-            int96 outStreamRate = forwarder.getAccountFlowrate(
-                streamToken,
-                address(this)
+        if (msg.sender != CREATOR && !isCritical()) {
+            revert NoEmergency(
+                msg.sender
             );
-            uint256 currTapBalance = streamToken.balanceOf(address(this));
-            uint256 reqTapBalance = (outStreamRate * 1 days).toUint256();
-
-            if (currTapBalance >= reqTapBalance)
-                revert NoEmergency(
-                    msg.sender,
-                    _holder,
-                    currTapBalance,
-                    reqTapBalance
-                );
         }
 
-        // forwarder.deleteFlow(streamToken, address(this), _holder, "0x");
-        forwarder.setFlowrate(streamToken, msg.sender, int96(0));
+        // Change the tap status to inactive to disallow new outgoing streams.
+        if (active) active = false;
+
+        CFA_V1_FORWARDER.setFlowrate(STREAM_TOKEN, _holder, int96(0));
 
         emit EmergencyCloseInitiated(_holder);
     }
@@ -410,6 +394,28 @@ contract Tap is Initializable, ITap, SuperAppBase {
         active = false;
 
         emit TapDeactivated();
+    }
+
+    function isCritical() public view returns (bool _status) {
+        // Anyone can trigger this method to know if tap balance is insufficient.
+        IcfaV1Forwarder forwarder = CFA_V1_FORWARDER;
+        ISuperToken streamToken = STREAM_TOKEN;
+
+        int96 outStreamRate = forwarder.getAccountFlowrate(
+            streamToken,
+            address(this)
+        );
+
+        if(outStreamRate >= 0) return false;
+
+        uint256 currTapBalance = streamToken.balanceOf(address(this));
+        
+        // Tap should have enough balance to stream for a day at least.
+        uint256 reqTapBalance = (-1 * outStreamRate * 1 days).toUint256();
+
+        if (currTapBalance >= reqTapBalance) return false;
+
+        return true;
     }
 
     function _calcCurrHolderStreams(
