@@ -59,13 +59,15 @@ interface ITap {
     error HolderStreamsNotFound(address holder);
     error WrongStreamCloseAttempt(uint256 tokenId, address terminator);
     error StreamsAdjustmentsFailed(address prevHolder, address currHolder);
+    error StreamAdjustmentFailedInReinstate(address prevHolder);
     error StreamsAlreadyReinstated(address prevHolder);
     error NoEmergency(
         address terminator
     );
     error TapMinAmountLimit(uint256 remainingAmount, uint256 minAmountRequried);
     error TapBalanceInsufficient(uint256 currTapBalance, uint256 reqTapBalance);
-
+    
+    function tokenIdHolders(uint256 tokenId) external returns(address holder);
     function initialize(
         string memory name,
         address host,
@@ -78,8 +80,8 @@ interface ITap {
 
     function topUpTap(uint256 amount) external;
 
-    function getClaimedData(address user, uint256 tokenId)
+    function getClaimedData(address user)
         external
         view
-        returns (bool status, int96 claimedRate);
+        returns (uint256 numStreams, int96 claimedRate);
 }

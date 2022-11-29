@@ -166,15 +166,15 @@ contract TapTest is Setup {
         // Alice closes her stream
         sf.cfaV1Forwarder.deleteFlow(superToken, address(tap), alice, "0x");
 
-        (bool _status, int96 _claimedRate) = tap.getClaimedData(alice, 1);
-        console.log("Token id 1 status: %s", _status);
-        console.log("Token id 1 claimed rate: ");
-        console.logInt(_claimedRate);
+        // (bool _status, int96 _claimedRate) = tap.getClaimedData(alice, 1);
+        // console.log("Token id 1 status: %s", _status);
+        // console.log("Token id 1 claimed rate: ");
+        // console.logInt(_claimedRate);
 
-        (_status, _claimedRate) = tap.getClaimedData(alice, 2);
-        console.log("Token id 2 status: %s", _status);
-        console.log("Token id 2 claimed rate: ");
-        console.logInt(_claimedRate);
+        // (_status, _claimedRate) = tap.getClaimedData(alice, 2);
+        // console.log("Token id 2 status: %s", _status);
+        // console.log("Token id 2 claimed rate: ");
+        // console.logInt(_claimedRate);
 
         assertEq(
             sf.cfaV1Forwarder.getFlowrate(superToken, address(tap), alice),

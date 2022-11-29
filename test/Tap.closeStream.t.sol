@@ -80,7 +80,7 @@ contract TapTest is Setup {
         vm.stopPrank();
 
         // Skip ahead by 19 months 27 days.
-        // We arrived at this figure by manual calculation.
+        // I arrived at this figure by manual calculation.
         skip(3600 * 24 * 30 * 19 + 3600 * 24 * 27 + 3600 * 4);
 
         assertTrue(tap.isCritical(), "Tap is not critical");
