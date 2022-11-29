@@ -6,8 +6,11 @@ import {ISuperfluid, ISuperToken} from "protocol-monorepo/packages/ethereum-cont
 import {IcfaV1Forwarder} from "./IcfaV1Forwarder.sol";
 
 interface ITap {
-    // TODO: Explore bitpacking as a solution using int104 or uint96.
+    // NOTE: Is there a requirement for a `dirty` variable to indicate that the
+    // all claimed streams of receiver were cancelled because of `emergencyCloseStreams`
+    // or the holders themselves closing all the streams?
     struct ClaimedData {
+        uint256 numStreams;
         int96 claimedRate;
         // TokenId => claimed/unclaimed
         mapping(uint256 => bool) isClaimedId;
@@ -31,11 +34,11 @@ interface ITap {
     );
     event StreamClaimedById(address indexed claimant, uint256 tokenId);
     event StreamsAdjusted(address indexed holder, int96 oldRatePerNFT, int96 newRatePerNFT);
+    event StreamsReinstated(address indexed holder, int96 numStreams, int96 newOutStreamRate, int96 ratePerNFT);
     event EmergencyCloseInitiated(address indexed holder);
     event TapDrained(
         address indexed streamToken,
-        uint256 drainAmount,
-        uint256 remainingAmount
+        uint256 drainAmount
     );
 
     error ZeroAddress();
@@ -56,6 +59,7 @@ interface ITap {
     error HolderStreamsNotFound(address holder);
     error WrongStreamCloseAttempt(uint256 tokenId, address terminator);
     error StreamsAdjustmentsFailed(address prevHolder, address currHolder);
+    error StreamsAlreadyReinstated(address prevHolder);
     error NoEmergency(
         address terminator
     );

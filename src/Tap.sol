@@ -155,6 +155,9 @@ contract Tap is Initializable, ITap, SuperAppBase {
 
                 claimedStreams[prevHolder].claimedRate = cachedRatePerNFT;
 
+                // Reduce the number of streams the prev holder has.
+                --claimedStreams[prevHolder].numStreams;
+
                 forwarder.setFlowrate(
                     streamToken,
                     prevHolder,
@@ -191,12 +194,43 @@ contract Tap is Initializable, ITap, SuperAppBase {
 
         // Mark the stream against the `tokenId` as claimed.
         claimedStreams[msg.sender].isClaimedId[_tokenId] = true;
+        ++claimedStreams[msg.sender].numStreams;
 
         if (claimedStreams[msg.sender].claimedRate != cachedRatePerNFT) {
             claimedStreams[msg.sender].claimedRate = cachedRatePerNFT;
         }
 
         emit StreamClaimedById(msg.sender, _tokenId);
+    }
+
+    function reinstateStreams(address _prevHolder) external {
+        if (!active) revert TapInactive();
+
+        if (claimedStreams[_prevHolder].claimedRate != 0)
+            revert StreamsAlreadyReinstated(_prevHolder);
+
+        IcfaV1Forwarder forwarder = CFA_V1_FORWARDER;
+        ISuperToken streamToken = STREAM_TOKEN;
+
+        int96 cachedRatePerNFT = ratePerNFT;
+        int96 numStreams = (claimedStreams[_prevHolder].numStreams)
+            .toInt256()
+            .toInt96();
+        int96 deltaStreamRate = numStreams * cachedRatePerNFT;
+
+        if (_canAdjustStreams(forwarder, streamToken, deltaStreamRate))
+            revert StreamsAlreadyReinstated(_prevHolder);
+
+        claimedStreams[_prevHolder].claimedRate = cachedRatePerNFT;
+
+        forwarder.setFlowrate(streamToken, _prevHolder, deltaStreamRate);
+
+        emit StreamsReinstated(
+            _prevHolder,
+            numStreams,
+            deltaStreamRate,
+            cachedRatePerNFT
+        );
     }
 
     function topUpTap(uint256 _amount) external {
@@ -212,31 +246,20 @@ contract Tap is Initializable, ITap, SuperAppBase {
         emit TapToppedUp(address(streamToken), _amount);
     }
 
+    // NOTE: This method can lead to instant liquidation of streams.
     function drainTap(uint256 _amount) external {
         if (CREATOR != msg.sender) revert NotTapCreator();
-        // The following check might be unnecessary.
-        // if (!tap.active) revert TapInactive(_id);
 
-        IcfaV1Forwarder forwarder = CFA_V1_FORWARDER;
         ISuperToken streamToken = STREAM_TOKEN;
-        int96 currOutStream = forwarder.getAccountFlowrate(
-            streamToken,
-            address(this)
-        );
         uint256 currTapBalance = streamToken.balanceOf(address(this));
 
-        if (currTapBalance < _amount)
+        if (_amount == type(uint256).max) _amount = currTapBalance;
+        else if (currTapBalance < _amount)
             revert TapBalanceInsufficient(currTapBalance, _amount);
-
-        uint256 minAmountReq = (currOutStream * 1 days).toUint256();
-        uint256 remAmount = currTapBalance - _amount;
-
-        if (minAmountReq < remAmount)
-            revert TapMinAmountLimit(remAmount, minAmountReq);
 
         if (!streamToken.transfer(msg.sender, _amount)) revert TransferFailed();
 
-        emit TapDrained(address(streamToken), _amount, remAmount);
+        emit TapDrained(address(streamToken), _amount);
     }
 
     function closeStream(uint256 _tokenId) external {
@@ -279,6 +302,7 @@ contract Tap is Initializable, ITap, SuperAppBase {
 
             delete tokenIdHolders[_tokenId];
             delete claimedStreams[prevHolder].isClaimedId[_tokenId];
+            --claimedStreams[prevHolder].numStreams;
 
             if (
                 prevHolderOldStreamRate > newOutStreamRate ||
@@ -313,13 +337,13 @@ contract Tap is Initializable, ITap, SuperAppBase {
 
         // Check if the caller is the creator, if not check if tap balance is insufficient.
         if (msg.sender != CREATOR && !isCritical()) {
-            revert NoEmergency(
-                msg.sender
-            );
+            revert NoEmergency(msg.sender);
         }
 
         // Change the tap status to inactive to disallow new outgoing streams.
         if (active) active = false;
+
+        delete claimedStreams[_holder].claimedRate;
 
         CFA_V1_FORWARDER.setFlowrate(STREAM_TOKEN, _holder, int96(0));
 
@@ -406,10 +430,10 @@ contract Tap is Initializable, ITap, SuperAppBase {
             address(this)
         );
 
-        if(outStreamRate >= 0) return false;
+        if (outStreamRate >= 0) return false;
 
         uint256 currTapBalance = streamToken.balanceOf(address(this));
-        
+
         // Tap should have enough balance to stream for a day at least.
         uint256 reqTapBalance = (-1 * outStreamRate * 1 days).toUint256();
 
@@ -426,17 +450,13 @@ contract Tap is Initializable, ITap, SuperAppBase {
         int96 _cachedRatePerNFT
     ) internal view returns (int96 _currHolderNewStreamRate) {
         if (_currHolderPerIdRate != int96(0)) {
-            int96 currHolderOldStreamRate = _forwarder.getFlowrate(
-                _streamToken,
-                address(this),
-                _currHolder
-            );
-            int96 numStreams = currHolderOldStreamRate / _currHolderPerIdRate;
-
             // console.log("Num streams: ");
             // console.logInt(numStreams);
 
-            _currHolderNewStreamRate = (numStreams + 1) * _cachedRatePerNFT;
+            _currHolderNewStreamRate =
+                ((claimedStreams[_currHolder].numStreams).toInt256().toInt96() +
+                    1) *
+                _cachedRatePerNFT;
 
             // console.log("Cached rate per NFT:");
             // console.logInt(_cachedRatePerNFT);
@@ -454,7 +474,7 @@ contract Tap is Initializable, ITap, SuperAppBase {
         int96 _prevHolderPerIdRate,
         int96 _cachedRatePerNFT
     ) internal view returns (int96 _prevHolderNewStreamRate) {
-        int96 prevHolderOldStreamRate = claimedStreams[_prevHolder].claimedRate;
+        // int96 prevHolderOldStreamRate = claimedStreams[_prevHolder].claimedRate;
 
         // console.log("Previous holder old stream rate: ");
         // console.logInt(prevHolderOldStreamRate);
@@ -462,13 +482,10 @@ contract Tap is Initializable, ITap, SuperAppBase {
         // Rate per id when last time the stream was claimed against this `tokenId`.
         // This is necessary as `ratePerNFT` can be changed by the creator any time.
         if (_prevHolderPerIdRate != int96(0)) {
-            prevHolderOldStreamRate = _forwarder.getFlowrate(
-                _streamToken,
-                address(this),
-                _prevHolder
-            );
-            int96 numStreams = prevHolderOldStreamRate / _prevHolderPerIdRate;
-            _prevHolderNewStreamRate = (numStreams - 1) * _cachedRatePerNFT;
+            _prevHolderNewStreamRate =
+                ((claimedStreams[_prevHolder].numStreams).toInt256().toInt96() -
+                    1) *
+                _cachedRatePerNFT;
             // console.log("Previous holder new stream rate: ");
             // console.logInt(_prevHolderNewStreamRate);
         } else {
@@ -534,8 +551,10 @@ contract Tap is Initializable, ITap, SuperAppBase {
 
         _newCtx = _ctx;
 
-        (address holder, ) = abi.decode(_agreementData, (address, address));
+        (, address holder) = abi.decode(_agreementData, (address, address));
 
-        delete claimedStreams[holder];
+        console.log("Reached here");
+
+        delete claimedStreams[holder].claimedRate;
     }
 }

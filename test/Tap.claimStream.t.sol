@@ -152,6 +152,45 @@ contract TapTest is Setup {
         );
     }
 
+    function testClaimStreamByHolderAfterForceClosureByHolder() public {
+        Tap tap = _createTap();
+
+        nft.mintTo(alice);
+        nft.mintTo(alice);
+
+        vm.startPrank(alice);
+
+        tap.claimStream(1);
+        tap.claimStream(2);
+
+        // Alice closes her stream
+        sf.cfaV1Forwarder.deleteFlow(superToken, address(tap), alice, "0x");
+
+        (bool _status, int96 _claimedRate) = tap.getClaimedData(alice, 1);
+        console.log("Token id 1 status: %s", _status);
+        console.log("Token id 1 claimed rate: ");
+        console.logInt(_claimedRate);
+
+        (_status, _claimedRate) = tap.getClaimedData(alice, 2);
+        console.log("Token id 2 status: %s", _status);
+        console.log("Token id 2 claimed rate: ");
+        console.logInt(_claimedRate);
+
+        assertEq(
+            sf.cfaV1Forwarder.getFlowrate(superToken, address(tap), alice),
+            0,
+            "Flows still exist"
+        );
+
+        vm.expectRevert(abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 1));
+        tap.claimStream(1);
+
+        vm.expectRevert(abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 2));
+        tap.claimStream(2);
+
+        vm.stopPrank();
+    }
+
     function testClaimStreamByHolderAfterClosureByCreator() public {
         Tap tap = _createTap();
 
@@ -180,7 +219,7 @@ contract TapTest is Setup {
 
         vm.startPrank(alice);
         tap.claimStream(1);
-        tap.closeStream(1);    
+        tap.closeStream(1);
         nft.transferFrom(alice, bob, 1);
         vm.stopPrank();
 
@@ -251,7 +290,7 @@ contract TapTest is Setup {
         Tap tap = _createTap();
 
         nft.mintTo(alice);
-        
+
         vm.prank(alice);
         tap.claimStream(1);
 
@@ -282,7 +321,7 @@ contract TapTest is Setup {
 
         vm.prank(alice);
         nft.transferFrom(alice, bob, 1);
-        
+
         vm.prank(bob);
         tap.claimStream(1);
 
@@ -304,7 +343,9 @@ contract TapTest is Setup {
 
         // If Bob tries to claim an already claimed stream, the transaction should revert.
         vm.prank(bob);
-        vm.expectRevert(abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 1));
+        vm.expectRevert(
+            abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 1)
+        );
         tap.claimStream(1);
     }
 
@@ -324,7 +365,7 @@ contract TapTest is Setup {
             int96(_convertToRate(2e10)),
             "Wrong incoming streamrate"
         );
-        
+
         vm.prank(admin);
         tap.changeRate(_convertToRate(1e11));
 
@@ -337,9 +378,13 @@ contract TapTest is Setup {
             "Streams adjustment error"
         );
 
-        vm.expectRevert(abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 1));
+        vm.expectRevert(
+            abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 1)
+        );
         tap.claimStream(1);
-        vm.expectRevert(abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 2));
+        vm.expectRevert(
+            abi.encodeWithSelector(ITap.StreamAlreadyClaimed.selector, 2)
+        );
         tap.claimStream(2);
     }
 }

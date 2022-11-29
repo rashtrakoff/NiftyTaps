@@ -4473,8 +4473,8 @@
       }
     },
     "src/Tap.sol": {
-      "lastModificationDate": 1669659828780,
-      "contentHash": "ea30bf1886bf381352d2f459d3f025ab",
+      "lastModificationDate": 1669737854532,
+      "contentHash": "84c6bce02a472c7bc8ec88e4076c3169",
       "sourceName": "src/Tap.sol",
       "solcConfig": {
         "settings": {
@@ -4645,8 +4645,8 @@
       }
     },
     "src/interfaces/ITap.sol": {
-      "lastModificationDate": 1669659537859,
-      "contentHash": "68425f49d96f90536cfb4846c2a0c835",
+      "lastModificationDate": 1669737842903,
+      "contentHash": "8f4a1f97513d1652fea0ae735733ff57",
       "sourceName": "src/interfaces/ITap.sol",
       "solcConfig": {
         "settings": {
@@ -5098,8 +5098,8 @@
       }
     },
     "test/Tap.claimStream.t.sol": {
-      "lastModificationDate": 1669544769535,
-      "contentHash": "af3a99c0d4c6430e997600adeb527180",
+      "lastModificationDate": 1669738025836,
+      "contentHash": "130cb08a2c91bbb2ae2f4c6dceeb7794",
       "sourceName": "test/Tap.claimStream.t.sol",
       "solcConfig": {
         "settings": {
@@ -5382,6 +5382,150 @@
       "artifacts": {
         "TapTest": {
           "0.8.16+commit.07a7930e.Linux.gcc": "Tap.closeStream.t.sol/TapTest.json"
+        }
+      }
+    },
+    "test/Tap.drainTap.t.sol": {
+      "lastModificationDate": 1669728670685,
+      "contentHash": "862ad44b75af8f6ad41df5d240266168",
+      "sourceName": "test/Tap.drainTap.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/lib/ds-test/src/test.sol",
+        "lib/forge-std/src/Common.sol",
+        "lib/forge-std/src/Components.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src/Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+        "lib/openzeppelin-contracts/contracts/access/AccessControlEnumerable.sol",
+        "lib/openzeppelin-contracts/contracts/access/IAccessControl.sol",
+        "lib/openzeppelin-contracts/contracts/access/IAccessControlEnumerable.sol",
+        "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        "lib/openzeppelin-contracts/contracts/proxy/Clones.sol",
+        "lib/openzeppelin-contracts/contracts/proxy/Proxy.sol",
+        "lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777Recipient.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777Sender.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Address.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Create2.sol",
+        "lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+        "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol",
+        "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+        "lib/openzeppelin-contracts/contracts/utils/introspection/IERC1820Registry.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+        "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol",
+        "lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/agreements/AgreementBase.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/agreements/AgreementLibrary.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/agreements/ConstantFlowAgreementV1.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/agreements/InstantDistributionAgreementV1.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/apps/CFAv1Library.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/apps/IDAv1Library.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/apps/SuperAppBase.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/gov/SuperfluidGovernanceBase.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementHook.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IInstantDistributionAgreementV1.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/CustomSuperTokenBase.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperTokenFactory.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/IPureSuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ISETH.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/utils/IRelayRecipient.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/utils/IResolver.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/BaseRelayRecipient.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/CallUtils.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/ERC1820RegistryCompiled.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/ERC777Helper.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/EventsEmitter.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/FixedSizeData.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/libs/SlotsBitmapLibrary.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/superfluid/FullUpgradableSuperTokenProxy.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/superfluid/SuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/superfluid/SuperTokenFactory.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/superfluid/Superfluid.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/superfluid/SuperfluidToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/tokens/PureSuperToken.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/tokens/SETH.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSProxiable.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSProxy.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSUtils.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/CFAv1Forwarder.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/Resolver.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/SuperfluidFrameworkDeployer.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/SuperfluidLoader.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/TestGovernance.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/TestResolver.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/utils/TestToken.sol",
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "src/Tap.sol",
+        "src/TapWizard.sol",
+        "src/interfaces/IERC20Mod.sol",
+        "src/interfaces/ITap.sol",
+        "src/interfaces/ITapWizard.sol",
+        "src/interfaces/IcfaV1Forwarder.sol",
+        "test/Setup.sol",
+        "test/helpers/FoundrySuperfluidTester.sol",
+        "test/mocks/MockNFT.sol"
+      ],
+      "versionRequirement": "^0.8.15",
+      "artifacts": {
+        "TapTest": {
+          "0.8.16+commit.07a7930e.Linux.gcc": "Tap.drainTap.t.sol/TapTest.json"
         }
       }
     },
