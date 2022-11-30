@@ -4536,8 +4536,8 @@
       }
     },
     "src/TapWizard.sol": {
-      "lastModificationDate": 1669436376518,
-      "contentHash": "31529e99f0f7d6b523526df5d4a4c91c",
+      "lastModificationDate": 1669803276563,
+      "contentHash": "b07f8f858363de1d93d1c476fcc9c115",
       "sourceName": "src/TapWizard.sol",
       "solcConfig": {
         "settings": {
@@ -4702,8 +4702,8 @@
       }
     },
     "src/interfaces/ITapWizard.sol": {
-      "lastModificationDate": 1669436845154,
-      "contentHash": "f1b745351c6b4b7e43258ce6912f863d",
+      "lastModificationDate": 1669803301851,
+      "contentHash": "c81183b4d2f963fbccae7c4d731513ac",
       "sourceName": "src/interfaces/ITapWizard.sol",
       "solcConfig": {
         "settings": {
@@ -4738,6 +4738,7 @@
         "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC777/IERC777.sol",
         "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/agreements/IConstantFlowAgreementV1.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/Definitions.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
@@ -4747,7 +4748,8 @@
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidGovernance.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
         "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/ERC20WithTokenInfo.sol",
-        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol"
+        "lib/protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
+        "src/interfaces/IcfaV1Forwarder.sol"
       ],
       "versionRequirement": "^0.8.15",
       "artifacts": {
