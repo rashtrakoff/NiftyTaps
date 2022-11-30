@@ -3,6 +3,7 @@ pragma solidity ^0.8.15;
 
 import {IERC721} from "openzeppelin-contracts/token/ERC721/IERC721.sol";
 import {ISuperfluid, ISuperToken} from "protocol-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol";
+import {IcfaV1Forwarder} from "./IcfaV1Forwarder.sol";
 
 interface ITapWizard {
     event ImplementationChanged(
@@ -36,6 +37,9 @@ interface ITapWizard {
         IERC721 nft,
         ISuperToken superToken
     ) external returns (address newTap);
+    function Taps(string memory name) external view returns(address tap);
+    function CFA_V1_FORWARDER() external view returns(IcfaV1Forwarder forwarder);
+    function HOST() external view returns(ISuperfluid host);
+    function implementation() external view returns(address tapImplementation);
 
-    function Taps(string memory name) external returns(address tap);
 }

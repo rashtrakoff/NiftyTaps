@@ -6,14 +6,12 @@ import {ISuperfluid, ISuperToken} from "protocol-monorepo/packages/ethereum-cont
 import {IcfaV1Forwarder} from "./IcfaV1Forwarder.sol";
 
 interface ITap {
-    // NOTE: Is there a requirement for a `dirty` variable to indicate that the
-    // all claimed streams of receiver were cancelled because of `emergencyCloseStreams`
-    // or the holders themselves closing all the streams?
+    // NOTE: Is there a requirement for a `dirty` variable to indicate that
+    // all the claimed streams of a receiver were cancelled because of `emergencyCloseStreams`
+    // or the holders themselves closing all the streams forcefully?
     struct ClaimedData {
-        uint256 numStreams;
         int96 claimedRate;
-        // TokenId => claimed/unclaimed
-        mapping(uint256 => bool) isClaimedId;
+        uint256 numStreams;
     }
 
     event TapCreated(
@@ -78,10 +76,15 @@ interface ITap {
         ISuperToken streamToken
     ) external;
 
+    function claimStream(uint256 tokenId) external;
+    function reinstateStreams(address prevHolder) external;
     function topUpTap(uint256 amount) external;
-
-    function getClaimedData(address user)
-        external
-        view
-        returns (uint256 numStreams, int96 claimedRate);
+    function drainTap(uint256 amount) external;
+    function closeStream(uint256 tokenId) external;
+    function emergencyCloseStreams(address holder) external;
+    function adjustCurrentStreams(address holder) external;
+    function changeRate(uint96 newRatePerNFT) external;
+    function activateTap() external;
+    function deactivateTap() external;
+    function isCritical() external view returns (bool status);
 }

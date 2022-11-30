@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.15;
+
 import {IERC721} from "openzeppelin-contracts/token/ERC721/IERC721.sol";
 import {Ownable} from "openzeppelin-contracts/access/Ownable.sol";
 import {Clones} from "openzeppelin-contracts/proxy/Clones.sol";
@@ -34,7 +35,8 @@ contract TapWizard is Ownable, ITapWizard {
     ) {
         if (
             address(_cfaV1Forwarder) == address(0) ||
-            address(_host) == address(0)
+            address(_host) == address(0) ||
+            address(_implementation) == address(0)
         ) revert ZeroAddress();
 
         CFA_V1_FORWARDER = _cfaV1Forwarder;
