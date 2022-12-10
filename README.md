@@ -24,9 +24,10 @@ And many more!
 
 # Deployments
 
-| Chain          | Names                                                                                                                     |
-|----------------|---------------------------------------------------------------------------------------------------------------------------|
-| Polygon Mumbai | TapWizard: 0xfe5E4EEC148f1EE4172a87cfB89EADCcC79929ca<br>Tap (Implementation): 0xeF726f942F58D3ca2DCe0E0D076fdB9F4C05CD80 |
+| Chain           | Names                                                                                                                     |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------|
+| Polygon Mumbai  | TapWizard: 0xfe5E4EEC148f1EE4172a87cfB89EADCcC79929ca<br>Tap (Implementation): 0xeF726f942F58D3ca2DCe0E0D076fdB9F4C05CD80 |
+| Polygon Mainnet | TapWizard: 0x27Dcb9caED2Cd91430292916144de0D30D4A01E3<br>Tap (implementation): 0xE7D0f8C62Ab960888ECA61d9DF8bCFB69FD396c3 |
 
 # How to Use the Contracts?
 
@@ -62,10 +63,15 @@ I am using forge script `Deploy.s.sol` for deploying the necessary contracts. Th
 Using `--verify` flag while running `Deploy.s.sol` script throws some error. Try verifying the contracts independently using `forge verify-contract` command. To use environment variables, run `source .env` command.
 
 The following command verifies the `Tap` implementation contract (on Mumbai testnet).
-`forge verify-contract <Tap address> Tap --watch --chain-id 80001 $POLYGONSCAN_API_KEY`
+
+``` bash
+forge verify-contract <Tap address> Tap --watch --chain-id 80001 $POLYGONSCAN_API_KEY
+```
 
 Verifying the `TapWizard` is a bit different. You will have to pass the constructor arguments. I use a `.txt` file created after deploying the contracts. Add the arguments passed to the `TapWizard` contract during deployment separated by a space then run the following command:
 
-`forge verify-contract <TapWizard contract address> TapWizard --constructor-args-path < Path to .txt file> --watch --chain-id 80001 $POLYGONSCAN_API_KEY`
+``` bash
+forge verify-contract <TapWizard contract address> TapWizard --constructor-args-path < Path to .txt file> --watch --chain-id 80001 $POLYGONSCAN_API_KEY`
+```
 
 For any other help, please reach out to me using Discord (rashtrakoff#2547).
