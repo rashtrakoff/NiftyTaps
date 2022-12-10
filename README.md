@@ -55,8 +55,10 @@ Use `createTap` method in the `TapWizard` contract and give the following argume
 
 I am using forge script `Deploy.s.sol` for deploying the necessary contracts. This includes deploying a `Tap` contract for implementation instance which can be used in the `TapWizard` to create clones and the `TapWizard` contract itself. Please see the contract interfaces to understand the arguments to be passed. Run the below command to deploy the contracts.
 
-`source .env`
-`forge script script/Deploy.s.sol:DeployScript --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv`
+``` bash
+source .env
+forge script script/Deploy.s.sol:DeployScript --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv
+```
 
 ## Verification of Contract
 
