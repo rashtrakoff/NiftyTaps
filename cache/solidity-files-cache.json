@@ -4955,7 +4955,7 @@
       }
     },
     "test/Setup.sol": {
-      "lastModificationDate": 1669529385355,
+      "lastModificationDate": 1669808334464,
       "contentHash": "97f285196087a64058cf4104482005f1",
       "sourceName": "test/Setup.sol",
       "solcConfig": {
@@ -5098,7 +5098,7 @@
       }
     },
     "test/Tap.adjustCurrentStreams.t.sol": {
-      "lastModificationDate": 1669545218922,
+      "lastModificationDate": 1669808334465,
       "contentHash": "80f4213da437d859183c670ad7ee963b",
       "sourceName": "test/Tap.adjustCurrentStreams.t.sol",
       "solcConfig": {
@@ -5242,7 +5242,7 @@
       }
     },
     "test/Tap.claimStream.t.sol": {
-      "lastModificationDate": 1669738814444,
+      "lastModificationDate": 1669808334465,
       "contentHash": "1f27696eb62feff5bc70ae07a516e27a",
       "sourceName": "test/Tap.claimStream.t.sol",
       "solcConfig": {
@@ -5386,7 +5386,7 @@
       }
     },
     "test/Tap.closeStream.t.sol": {
-      "lastModificationDate": 1669746137292,
+      "lastModificationDate": 1669808334465,
       "contentHash": "51142c1c0c3b162f33d842bf327046ec",
       "sourceName": "test/Tap.closeStream.t.sol",
       "solcConfig": {
@@ -5530,7 +5530,7 @@
       }
     },
     "test/Tap.drainTap.t.sol": {
-      "lastModificationDate": 1669728670685,
+      "lastModificationDate": 1669808334466,
       "contentHash": "862ad44b75af8f6ad41df5d240266168",
       "sourceName": "test/Tap.drainTap.t.sol",
       "solcConfig": {
@@ -5674,7 +5674,7 @@
       }
     },
     "test/Tap.reinstateStreams.t.sol": {
-      "lastModificationDate": 1669747209581,
+      "lastModificationDate": 1669808334466,
       "contentHash": "b7610b3b2c98d6f3a06d5ad18f7f44f1",
       "sourceName": "test/Tap.reinstateStreams.t.sol",
       "solcConfig": {
@@ -5818,7 +5818,7 @@
       }
     },
     "test/TapWizard.t.sol": {
-      "lastModificationDate": 1669529750386,
+      "lastModificationDate": 1669808334467,
       "contentHash": "2f88948e6ab97d1cc525a52028faca02",
       "sourceName": "test/TapWizard.t.sol",
       "solcConfig": {
@@ -5962,8 +5962,8 @@
       }
     },
     "test/helpers/FoundrySuperfluidTester.sol": {
-      "lastModificationDate": 1669439785169,
-      "contentHash": "00ebc5e0baa8152fb76ef1447777b655",
+      "lastModificationDate": 1670059920865,
+      "contentHash": "6a667ad50d062efb4ec468617ec120b8",
       "sourceName": "test/helpers/FoundrySuperfluidTester.sol",
       "solcConfig": {
         "settings": {

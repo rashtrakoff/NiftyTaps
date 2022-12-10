@@ -6,8 +6,10 @@ gas_reports = ["Tap"]
 
 [rpc_endpoints]
 mumbai = "${MUMBAI_RPC_URL}"
+polygon = "${POLYGON_RPC_URL}"
 
 [etherscan]
 mumbai = { key = "${POLYGONSCAN_API_KEY}" }
+polygon = { key = "${POLYGONSCAN_API_KEY}" }
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

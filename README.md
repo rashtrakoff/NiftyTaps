@@ -41,7 +41,7 @@ Use `createTap` method in the `TapWizard` contract and give the following argume
 - `IERC721 _nft` = NFT contract address which allows for stream claims.
 - `ISuperToken _streamToken` = The supertoken which will be disbursed by the tap.
 
-`createTap` method returns an address for the newly deployed clone of `Tap` contract. 
+`createTap` method returns an address for the newly deployed clone of `Tap` contract.
 
 - Next, you will have to activate the tap by using the `activateTap` method in the recently deployed clone of tap. 
 - Give enough allowance for the `Tap` clone to take super tokens from you in the next step.
@@ -56,6 +56,7 @@ I am using forge script `Deploy.s.sol` for deploying the necessary contracts. Th
 
 `source .env`
 `forge script script/Deploy.s.sol:DeployScript --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv`
+
 ## Verification of Contract
 
 Using `--verify` flag while running `Deploy.s.sol` script throws some error. Try verifying the contracts independently using `forge verify-contract` command. To use environment variables, run `source .env` command.
