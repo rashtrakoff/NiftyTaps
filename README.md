@@ -4,7 +4,7 @@ Claimable Superfluid token streams based on NFT possession.
 
 # Introduction
 
-NiftyTap allows anyone to distribute holders of an NFT collection to any number of Superfluid token streams. Imagine the creators of an NFT art collection who want to airdrop streams of tokens to their holders or a clever promoter who wants to promote his product by incentivising holders of an NFT collection. Maybe advertise to Lens profile holders or ENS domain holders? There are many more possibilities not even thought of yet!
+NiftyTap allows anyone to distribute, to the holders of an NFT collection, any number of Superfluid token streams. Imagine the creators of an NFT art collection who want to airdrop streams of tokens to their holders or a clever promoter who wants to promote his product by incentivising holders of an NFT collection. Maybe advertise to Lens profile holders or ENS domain holders? There are many more possibilities not even thought of yet!
 
 # How Does It Work?
 
