@@ -73,7 +73,9 @@ forge verify-contract <Tap address> Tap --watch --chain-id 80001 $POLYGONSCAN_AP
 Verifying the `TapWizard` is a bit different. You will have to pass the constructor arguments. I use a `.txt` file created after deploying the contracts. Add the arguments passed to the `TapWizard` contract during deployment separated by a space then run the following command:
 
 ``` bash
-forge verify-contract <TapWizard contract address> TapWizard --constructor-args-path < Path to .txt file> --watch --chain-id 80001 $POLYGONSCAN_API_KEY`
+forge verify-contract <TapWizard contract address> TapWizard --constructor-args-path < Path to .txt file> --watch --chain-id 80001 $POLYGONSCAN_API_KEY
 ```
 
-For any other help, please reach out to me using Discord (rashtrakoff#2547).
+[Here](https://www.canva.com/design/DAFUs0oFmac/LYy4CyMeb9GmhTDUBBZTXQ/edit?utm_content=DAFUs0oFmac&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) is a presentation and demo for NiftyTaps that I gave for [WavePool #3 winners presentation](https://www.youtube.com/watch?v=zZ-KVqf9nkc&t=21s).
+
+For any other help, please reach out to me on Discord (rashtrakoff#2547).
