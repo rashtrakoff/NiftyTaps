@@ -1,4 +1,6 @@
 .env
 .vscode
+out
+lib
 broadcast
 cache
