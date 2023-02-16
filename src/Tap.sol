@@ -212,7 +212,10 @@ contract Tap is Initializable, ITap, SuperAppBase {
             cachedRatePerNFT
         );
     }
-
+    
+    // TODO: Remove this function as this doesn't prevent anyone from sending supertokens
+    // to this contract. It also doesn't matter (from a security perspective) if anyone is 
+    // able to top up the supertoken balance of this contract.
     function topUpTap(uint256 _amount) external {
         if (CREATOR != msg.sender) revert NotTapCreator();
 
